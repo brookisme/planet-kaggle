@@ -22,3 +22,6 @@ playground.py
 # PYPI
 dist/
 MANIFEST
+
+# SUBLIME
+sftp-config.json
