@@ -62,8 +62,12 @@ class DummyVGG(object):
         return self._model
 
 
-    def fit_gen(self,train_sz,valid_sz,epochs,train_gen=None,valid_gen=None):
-        nb_epochs,steps,validation_steps=utils.gen_params(train_sz,valid_sz,epochs)
+    def fit_gen(self,train_sz,valid_sz,epochs,
+            train_gen=None,
+            valid_gen=None,
+            sample_pct=1.0):
+        nb_epochs,steps,validation_steps=utils.gen_params(
+            train_sz,valid_sz,epochs,sample_pct)
         self.model().fit_generator(
             generator=train_gen, 
             validation_data=valid_gen,

@@ -1,15 +1,15 @@
 import math
 
-def gen_params(train_size,valid_size,nb_epochs=5):
+def gen_params(train_size,valid_size,epochs=5,sample_pct=1.0):
     """ Generator Params
         returns data for fit generator
         Args:
             train_size: <int> size of training dataset
             valid_size: <int> size of validation dataset
-            nb_epochs: <int> number of epochs
+            epochs: <int> number of epochs
         return:
-            nb_epochs,steps_per_epoch, validation_steps
+            epochs,steps_per_epoch, validation_steps
     """
-    s=math.floor(train_size/nb_epochs)
-    vs=math.floor(valid_size/nb_epochs)
-    return nb_epochs,s,vs
+    s=math.floor(sample_pct*train_size/epochs)
+    vs=math.floor(sample_pct*valid_size/epochs)
+    return epochs,s,vs
