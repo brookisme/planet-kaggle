@@ -36,30 +36,23 @@ def FCBlock(model,dr=DEFAULT_DR,output_dim=200):
 
 
 
+
+####################################################################
 #
-# MODELS
+# MODEL_BASE: BASE CLASS FOR MODELS
+#   Args:
+#       batch_input_shape (None,w,h,ch)
+#       optimizer (SGD, Adam, ...)
+# must provide a self.model() method that uses the args above
 #
-class DummyVGG(object):
+####################################################################
+class MODEL_BASE(object):
     VERBOSE=1
 
-
-    def __init__(self,batch_input_shape=BATCH_INPUT_SHAPE,optimizer=Adam):
+    def __init__(self,batch_input_shape=BATCH_INPUT_SHAPE,optimizer='adam'):
         self.batch_input_shape=batch_input_shape
+        self.optimizer=optimizer
         self._model=None
-
-
-    def model(self):
-        if not self._model:
-            self._model=Sequential()
-            self._model.add(BatchNormalization(batch_input_shape=self.batch_input_shape))
-            self._model=ConvBlock(self._model,2,32)
-            self._model.add(Flatten())
-            self._model=FCBlock(self._model)
-            self._model.add(Dense(TARGET_DIM, activation='sigmoid'))
-            self._model.compile(loss='binary_crossentropy', 
-                  optimizer='adam',
-                  metrics=['accuracy'])
-        return self._model
 
 
     def fit_gen(self,train_sz,valid_sz,epochs,
@@ -75,3 +68,55 @@ class DummyVGG(object):
             validation_steps=validation_steps,
             epochs=epochs, 
             verbose=self.VERBOSE)
+
+
+
+####################################################################
+#
+# DUMMYVGG: A DUMB MODEL TO GET US STARTED
+#
+####################################################################
+class DummyVGG(MODEL_BASE):
+    def model(self):
+        if not self._model:
+            self._model=Sequential()
+            self._model.add(BatchNormalization(batch_input_shape=self.batch_input_shape))
+            self._model=ConvBlock(self._model,2,32)
+            self._model.add(Flatten())
+            self._model=FCBlock(self._model)
+            self._model.add(Dense(TARGET_DIM, activation='sigmoid'))
+            self._model.compile(loss='binary_crossentropy', 
+                  optimizer=self.optimizer,
+                  metrics=['accuracy'])
+        return self._model
+
+
+
+
+####################################################################
+#
+# VGGARCH: VGG ARCHITECTURE
+#
+####################################################################
+class VGGARCH(MODEL_BASE):
+    LL_ACTIVATION='sigmoid'
+    def model(self):
+        if not self._model:
+            self._model=Sequential()
+            self._model.add(BatchNormalization(batch_input_shape=self.batch_input_shape))
+            self._model=ConvBlock(self._model,2,32)
+            self._model=ConvBlock(self._model,2,64)
+            self._model=ConvBlock(self._model,2,128)
+            self._model=ConvBlock(self._model,3,256)
+            self._model=ConvBlock(self._model,3,512)
+            self._model=ConvBlock(self._model,3,512)
+            self._model.add(Flatten())
+            self._model=FCBlock(self._model)
+            self._model=FCBlock(self._model)
+            self._model.add(Dense(TARGET_DIM, activation=self.LL_ACTIVATION))
+            self._model.compile(loss='binary_crossentropy', 
+                  optimizer=self.optimizer,
+                  metrics=['accuracy'])
+        return self._model
+
+
