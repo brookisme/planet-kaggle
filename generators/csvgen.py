@@ -53,9 +53,10 @@ class CSVGen():
     
     def _set_data(self):
         """Set Data
-            sets two instance properties:
+            sets three instance properties:
                 self.labels
                 self.paths
+                self.dataframe
             the paths and labels are pairwised shuffled
         """
         df=pd.read_csv(self.file,sep=' ')
@@ -66,6 +67,7 @@ class CSVGen():
         labels=df[self.LABEL_COLUMN].values.tolist()
         paths=df[self.PATH_COLUMN].values.tolist()
         self.labels, self.paths = shuffle(labels,paths)
+        self.dataframe=df
 
 
     def _image_path_from_name(self,name):

@@ -1,3 +1,4 @@
+import os
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, BatchNormalization, Flatten, Lambda
@@ -5,16 +6,24 @@ from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
 import utils
+import numpy as np
+from skimage import io
 
 #
 # DEFAULTS
 #
+PROJECT_NAME='planet'
+DATA_ROOT=os.environ.get('DATA')
+WEIGHT_ROOT=os.environ.get('WEIGHTS')
+DATA_DIR=f'{DATA_ROOT}/{PROJECT_NAME}'
+WEIGHT_DIR=f'{WEIGHT_ROOT}/{PROJECT_NAME}'
 BANDS=4
 BATCH_INPUT_SHAPE=(None,256,256,BANDS)
 TARGET_DIM=17
-DEFAULT_OPT=Adam
+DEFAULT_OPT='adam'
 DEFAULT_LR=0.01
 DEFAULT_DR=0.5
+DEFAULT_LOSS_FUNC='binary_crossentropy'
 
 
 #
@@ -48,11 +57,38 @@ def FCBlock(model,dr=DEFAULT_DR,output_dim=200):
 ####################################################################
 class MODEL_BASE(object):
     VERBOSE=1
-
-    def __init__(self,batch_input_shape=BATCH_INPUT_SHAPE,optimizer='adam'):
+    def __init__(self,
+            batch_input_shape=BATCH_INPUT_SHAPE,
+            optimizer=DEFAULT_OPT,
+            loss_func=DEFAULT_LOSS_FUNC):
         self.batch_input_shape=batch_input_shape
         self.optimizer=optimizer
+        self.loss_func=loss_func
         self._model=None
+
+
+    def load_weights(self,name,path=WEIGHT_DIR):
+        self.model().load_weights(f'{path}/{name}')
+
+
+    def save_weights(self,name,path=WEIGHT_DIR):
+        self.model().save_weights(f'{path}/{name}')
+
+
+    def predict_image(self,
+            name=None,
+            file_ext=None,
+            data_root=DATA_DIR,
+            image_dir=None,
+            image=None,
+            return_image=False):
+        if not image:
+            image=io.imread(self._image_path(name,file_ext,data_root,image_dir))
+        pred=self.model().predict(np.expand_dims(image, axis=0))
+        if return_image:
+            return pred, image
+        else:
+            return pred
 
 
     def fit_gen(self,train_sz,valid_sz,epochs,
@@ -70,6 +106,15 @@ class MODEL_BASE(object):
             verbose=self.VERBOSE)
 
 
+    def _image_path(self,name=None,file_ext=None,data_root=DATA_DIR,image_dir=None):
+        fpath=f'{data_root}'
+        if image_dir: fpath=f'{fpath}/{image_dir}'
+        fpath=f'{fpath}/{name}'
+        if file_ext: fpath=f'{fpath}.{file_ext}'
+        return fpath
+
+
+
 
 ####################################################################
 #
@@ -85,7 +130,7 @@ class DummyVGG(MODEL_BASE):
             self._model.add(Flatten())
             self._model=FCBlock(self._model)
             self._model.add(Dense(TARGET_DIM, activation='sigmoid'))
-            self._model.compile(loss='binary_crossentropy', 
+            self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,
                   metrics=['accuracy'])
         return self._model
@@ -114,7 +159,7 @@ class VGGARCH(MODEL_BASE):
             self._model=FCBlock(self._model)
             self._model=FCBlock(self._model)
             self._model.add(Dense(TARGET_DIM, activation=self.LL_ACTIVATION))
-            self._model.compile(loss='binary_crossentropy', 
+            self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,
                   metrics=['accuracy'])
         return self._model
