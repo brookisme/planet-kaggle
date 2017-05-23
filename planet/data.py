@@ -10,7 +10,27 @@ ROOT=f'{DATA_ROOT}/{DATA_DIR}'
 LABEL_CSV=os.path.join(ROOT,'train.csv')
 
 class PlanetData(object):
+    """ CONSTRUCTS TRAINING/VALIDATION DATAFRAMES TO BE USED IN CSVGenerator
 
+        Args:
+            - train_size:
+                <int> number of training examples
+                <str> 'full' based on full use of dataset
+            - labels_df: Labels dataframe
+            - csv_path: (if labels_df not given) path to labels CSV
+            - valid_size: <int> number of validation examples
+            - valid_pct: 
+                <int> (if valid_size not given) valid_size=train_size * valid_pct / 100
+            - version: <str|int> string used naming of csv_files
+            - create:
+                - if True:
+                    create the train/valid dataframes/CSVs
+                    if auto_save: automatically save the train/valid CSVs
+                    if auto_clear: set labels_df to None after creation of train/valid
+                - else:
+                    load the train/valid dataframes for the parameters above
+    
+    """
     TAGS=[
         'artisinal_mine',
         'haze',
@@ -36,39 +56,43 @@ class PlanetData(object):
             valid_pct=20,
             valid_size=None,
             csv_path=LABEL_CSV,
+            labels_df=None,
             version=1,
-            read=False,
-            auto_save=True):
-        # set sizes
-        self.train_size=train_size
-        if valid_size: self.valid_size=valid_size
-        else: self.valid_size=math.floor(train_size*valid_pct/100)
-        # other params
+            create=False,
+            auto_save=True,
+            auto_clear=True):
         self.version=version
         self.auto_save=auto_save
-        # dataframes
-        if read:
-            self.load_dataframes()
+        if create:
+            self._set_dataframes(labels_df,csv_path)
         else:
-            self._set_dataframes(csv_path)
+            self.load_dataframes()
 
 
     def train_path(self):
+        """ Path to trainng CSV
+        """
         name=f'training_data_{self.train_size}_v{self.version}.csv'
         return f'{ROOT}/{name}'
 
     
     def valid_path(self):
+        """ Path to validation CSV
+        """
         name=f'validation_data_{self.valid_size}_v{self.version}.csv'
         return f'{ROOT}/{name}'
 
 
     def load_dataframes(self):
+        """ Load train/valid CSVs
+        """        
         self.train_df=pd.read_csv(self.train_path(),sep=' ')
         self.valid_df=pd.read_csv(self.valid_path(),sep=' ')
 
 
     def save(self):
+        """ Save train/valid CSVs
+        """              
         self.train_df.to_csv(self.train_path(),index=False,sep=' ')
         self.valid_df.to_csv(self.valid_path(),index=False,sep=' ')
 
@@ -76,17 +100,42 @@ class PlanetData(object):
     #
     # INTERNAL
     #
-    def _set_dataframes(self,csv_path):
-        self.labels_df=pd.read_csv(csv_path)
+    def _set_dataframes(self,labels_df,csv_path):
+        self.labels_df=labels_df or pd.read_csv(csv_path)
+        self._set_df_sizes(train_size,valid_size,valid_pct)
+        self._set_valid_size(valid_size)
         self.labels_df['vec']=self.labels_df.tags.apply(self._tags_to_vec)
         self.train_df=self.labels_df.sample(self.train_size)
         self.valid_df=self.labels_df.drop(
             self.train_df.index).sample(self.valid_size)
-        if self.auto_save:
-            self.save()
+        if self.auto_save: self.save()
+        if self.auto_clear: self.labels_df=None
+
+
+    def _set_df_sizes(self,train_size,valid_size,valid_pct):
+        """ set sizes for training and validation set
+            -   if train size is None, or a string ~ 'FULL' 
+                the whole dataset (minus the validation set) is used
+            -   valid_size is used over valid_pct
+        """
+        if type(train_size) is int:
+            self.train_size=train_size
+        else:
+            nb_rows=self.labels_df.shape[0]
+            if not valid_size:
+                valid_size=math.floor(nb_rows*valid_pct/100)
+            self.train_size=nb_rows-valid_size
+        if valid_size: 
+            self.valid_size=valid_size
+        else: 
+            self.valid_size=math.floor(self.train_size*valid_pct/100)
+    
 
 
     def _tags_to_vec(self,tags):
+        """ Convert Tags to a List Vector
+            - list ordering given by TAGS property
+        """     
         tags=tags.split(' ')
         return [int(label in tags) for label in self.TAGS]
 
