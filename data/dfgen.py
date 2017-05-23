@@ -1,26 +1,48 @@
+import os
 from skimage import io
 from sklearn.utils import shuffle
 import pandas as pd
 import numpy as np
 
 
-class CSVGen():
+DATA_ROOT=os.environ.get('DATA')
+DATA_DIR='planet-old'
+ROOT=f'{DATA_ROOT}/{DATA_DIR}'
+JPG_DIR = os.path.join(ROOT, 'train-jpg')
+TIF_DIR = os.path.join(ROOT, 'train-tif')
+
+class DFGen():
+    """ CREATES GENERATOR FROM DATAFRAME
+
+        Usage:
+            train_gen=DFGen(
+                dataframe=train_dataframe,batch_size=128)
+            next(train_gen.data())
+
+        Args:
+            dataframe: <dataframe> dataframe with label and image_path column
+            file: <str> (if not dataframe) path to csv with labels/image_paths
+            image_ext: <str> img ext (tif|jpg)
+            image_dir: <str> directory where images exist
+            batch_size: <int> batch-size
+    
+    """
     NAME_COLUMN='image_name'
     PATH_COLUMN='image_path'
     LABEL_COLUMN='vec'
     LABEL_TO_LIST=True
 
-    def __init__(self,file=None,dataframe=None,image_ext='tif',image_dir=None,batch_size=32):
-        """Initialize Generator
-            Args:
-                file: <str> path to 2-column csv 
-                file_type: <str> file ext 
-                batch_size: <int> batch-size
-        """
+    def __init__(
+            self,
+            file=None,
+            dataframe=None,
+            image_ext='tif',
+            image_dir=None,
+            batch_size=32):
         self.file=file
         self.batch_size=batch_size
         self.image_ext=image_ext
-        self.image_dir=image_dir
+        self._set_image_dir(image_dir)
         self._set_data(file,dataframe)
 
 
@@ -52,7 +74,19 @@ class CSVGen():
         """
         return io.imread(path)
     
-    
+
+
+    def _set_image_dir(self,image_dir):
+        """Set Image Dir
+        """
+        if image_dir: self.image_dir=image_dir
+        else:
+            if self.image_ext=='tif':
+                self.image_dir=TIF_DIR
+            else:
+                self.image_dir=JPG_DIR
+
+
     def _set_data(self,file,df):
         """Set Data
             sets three instance properties:
@@ -61,7 +95,8 @@ class CSVGen():
                 self.dataframe
             the paths and labels are pairwised shuffled
         """
-        if not df: df=pd.read_csv(self.file,sep=' ')
+        if (df is None) or (df is False): 
+            df=pd.read_csv(self.file,sep=' ')
         self.size=df.shape[0]
         df[self.PATH_COLUMN]=df[self.NAME_COLUMN].apply(self._image_path_from_name)
         if self.LABEL_TO_LIST: 
@@ -80,8 +115,14 @@ class CSVGen():
         return f'{self.image_dir}/{name}.{self.image_ext}'
 
 
-    def _strlist_to_list(self,strlist):
+    def _strlist_to_list(self,str_or_list):
         """ Convert a list in string form to a list
+            We must type check since:
+                - if dataframe loaded from CSV vec will be a string
+                - if dataframe created directly vec will be list
         """
-        return list(eval(strlist))
+        if type(str_or_list) is str:
+            return list(eval(str_or_list))
+        else:
+            return str_or_list
 

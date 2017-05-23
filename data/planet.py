@@ -10,7 +10,7 @@ ROOT=f'{DATA_ROOT}/{DATA_DIR}'
 LABEL_CSV=os.path.join(ROOT,'train.csv')
 
 class PlanetData(object):
-    """ CONSTRUCTS TRAINING/VALIDATION DATAFRAMES TO BE USED IN CSVGenerator
+    """ CONSTRUCTS TRAINING/VALIDATION DATAFRAMES
 
         Args:
             - train_size:
