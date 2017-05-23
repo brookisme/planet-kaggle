@@ -2,6 +2,8 @@ from skimage import io
 from sklearn.utils import shuffle
 import pandas as pd
 import numpy as np
+
+
 class CSVGen():
     NAME_COLUMN='image_name'
     PATH_COLUMN='image_path'

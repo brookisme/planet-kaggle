@@ -61,25 +61,36 @@ class PlanetData(object):
             create=False,
             auto_save=True,
             auto_clear=True):
+        self._init_params()
         self.version=version
         self.auto_save=auto_save
+        self.auto_clear=auto_clear
         if create:
-            self._set_dataframes(labels_df,csv_path)
+            self._set_label_df(labels_df,csv_path)
+            self._set_df_sizes(train_size,valid_size,valid_pct)
+            self._set_train_test_dfs()
         else:
+            self._set_df_sizes(train_size,valid_size,valid_pct)
             self.load_dataframes()
 
 
     def train_path(self):
         """ Path to trainng CSV
         """
-        name=f'training_data_{self.train_size}_v{self.version}.csv'
+        if self.is_full:
+            name=f'training_data_v{self.version}.csv'
+        else:
+            name=f'training_data_{self.train_size}_v{self.version}.csv'
         return f'{ROOT}/{name}'
 
     
     def valid_path(self):
         """ Path to validation CSV
         """
-        name=f'validation_data_{self.valid_size}_v{self.version}.csv'
+        if self.is_full:
+            name=f'validation_data_v{self.version}.csv'
+        else:
+            name=f'validation_data_{self.valid_size}_v{self.version}.csv'
         return f'{ROOT}/{name}'
 
 
@@ -100,11 +111,18 @@ class PlanetData(object):
     #
     # INTERNAL
     #
-    def _set_dataframes(self,labels_df,csv_path):
+    def _init_params(self):
+        self.train_size=None
+        self.labels_df=None
+        self.is_full=True
+
+
+    def _set_label_df(self,labels_df,csv_path):
         self.labels_df=labels_df or pd.read_csv(csv_path)
-        self._set_df_sizes(train_size,valid_size,valid_pct)
-        self._set_valid_size(valid_size)
         self.labels_df['vec']=self.labels_df.tags.apply(self._tags_to_vec)
+
+
+    def _set_train_test_dfs(self):
         self.train_df=self.labels_df.sample(self.train_size)
         self.valid_df=self.labels_df.drop(
             self.train_df.index).sample(self.valid_size)
@@ -120,14 +138,15 @@ class PlanetData(object):
         """
         if type(train_size) is int:
             self.train_size=train_size
-        else:
+            self.is_full=False
+        elif self.labels_df is not None:
             nb_rows=self.labels_df.shape[0]
             if not valid_size:
                 valid_size=math.floor(nb_rows*valid_pct/100)
             self.train_size=nb_rows-valid_size
         if valid_size: 
             self.valid_size=valid_size
-        else: 
+        if self.train_size: 
             self.valid_size=math.floor(self.train_size*valid_pct/100)
     
 
