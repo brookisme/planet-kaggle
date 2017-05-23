@@ -8,7 +8,7 @@ class CSVGen():
     LABEL_COLUMN='vec'
     LABEL_TO_LIST=True
 
-    def __init__(self,file,image_ext='tif',image_dir=None,batch_size=32):
+    def __init__(self,file=None,dataframe=None,image_ext='tif',image_dir=None,batch_size=32):
         """Initialize Generator
             Args:
                 file: <str> path to 2-column csv 
@@ -19,7 +19,7 @@ class CSVGen():
         self.batch_size=batch_size
         self.image_ext=image_ext
         self.image_dir=image_dir
-        self._set_data()
+        self._set_data(file,dataframe)
 
 
 
@@ -51,7 +51,7 @@ class CSVGen():
         return io.imread(path)
     
     
-    def _set_data(self):
+    def _set_data(self,file,df):
         """Set Data
             sets three instance properties:
                 self.labels
@@ -59,7 +59,7 @@ class CSVGen():
                 self.dataframe
             the paths and labels are pairwised shuffled
         """
-        df=pd.read_csv(self.file,sep=' ')
+        if not df: df=pd.read_csv(self.file,sep=' ')
         self.size=df.shape[0]
         df[self.PATH_COLUMN]=df[self.NAME_COLUMN].apply(self._image_path_from_name)
         if self.LABEL_TO_LIST: 
