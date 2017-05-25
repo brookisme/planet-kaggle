@@ -30,7 +30,6 @@ class DFGen():
     NAME_COLUMN='image_name'
     PATH_COLUMN='image_path'
     LABEL_COLUMN='vec'
-    LABEL_TO_LIST=True
 
     def __init__(
             self,
@@ -99,8 +98,6 @@ class DFGen():
             df=pd.read_csv(self.file,sep=' ')
         self.size=df.shape[0]
         df[self.PATH_COLUMN]=df[self.NAME_COLUMN].apply(self._image_path_from_name)
-        if self.LABEL_TO_LIST: 
-            df[self.LABEL_COLUMN]=df[self.LABEL_COLUMN].apply(self._strlist_to_list)
         labels=df[self.LABEL_COLUMN].values.tolist()
         paths=df[self.PATH_COLUMN].values.tolist()
         self.labels, self.paths = shuffle(labels,paths)
@@ -114,15 +111,4 @@ class DFGen():
         """
         return f'{self.image_dir}/{name}.{self.image_ext}'
 
-
-    def _strlist_to_list(self,str_or_list):
-        """ Convert a list in string form to a list
-            We must type check since:
-                - if dataframe loaded from CSV vec will be a string
-                - if dataframe created directly vec will be list
-        """
-        if type(str_or_list) is str:
-            return list(eval(str_or_list))
-        else:
-            return str_or_list
 

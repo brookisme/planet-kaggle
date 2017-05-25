@@ -9,6 +9,8 @@ import utils
 import numpy as np
 from skimage import io
 
+from data.dfgen import DFGen
+
 
 #
 # DEFAULTS
@@ -24,6 +26,7 @@ TARGET_DIM=17
 DEFAULT_OPT='adam'
 DEFAULT_DR=0.5
 DEFAULT_LOSS_FUNC=utils.cos_distance
+DEFAULT_METRICS=['accuracy']
 
 
 
@@ -44,11 +47,13 @@ class MODEL_BASE(object):
             batch_input_shape=BATCH_INPUT_SHAPE,
             optimizer=DEFAULT_OPT,
             loss_func=DEFAULT_LOSS_FUNC,
-            target_dim=TARGET_DIM):
+            target_dim=TARGET_DIM,
+            metrics=DEFAULT_METRICS):
         self.batch_input_shape=batch_input_shape
         self.optimizer=optimizer
         self.loss_func=loss_func
         self.target_dim=target_dim
+        self.metrics=metrics
         self._model=None
 
 
@@ -76,13 +81,32 @@ class MODEL_BASE(object):
             return pred
 
 
-    def fit_gen(self,train_sz,valid_sz,epochs,
+    def fit_gen(self,
+            epochs=None,
+            pdata=None,
+            train_sz=None,
+            valid_sz=None,
             train_gen=None,
             valid_gen=None,
-            sample_pct=1.0):
+            sample_pct=1.0,
+            batch_size=32):
+        """ call fit_generator 
+            Args:
+                -   if pdata (instance of <data.planent:PlanetData>) 
+                    use params from pdata
+                -   otherwise used passed params
+        """
+        if pdata:
+            train_sz=pdata.train_size
+            valid_sz=pdata.valid_size
+            train_gen=DFGen(
+                dataframe=pdata.train_df,batch_size=batch_size).data()
+            valid_gen=DFGen(
+                dataframe=pdata.valid_df,batch_size=batch_size).data()
+
         nb_epochs,steps,validation_steps=utils.gen_params(
             train_sz,valid_sz,epochs,sample_pct)
-        self.model().fit_generator(
+        return self.model().fit_generator(
             generator=train_gen, 
             validation_data=valid_gen,
             steps_per_epoch=steps,

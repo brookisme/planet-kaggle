@@ -5,9 +5,7 @@ from keras.layers import Dense, Dropout, BatchNormalization, Flatten
 from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
-import utils
 import numpy as np
-from skimage import io
 
 from models.base import MODEL_BASE
 
@@ -92,7 +90,7 @@ class EKAMI(MODEL_BASE):
             self._model.add(Dense(self.target_dim, activation='sigmoid'))
             self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,
-                  metrics=['accuracy'])
+                  metrics=self.metrics)
         return self._model
 
 

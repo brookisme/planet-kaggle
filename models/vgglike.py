@@ -51,7 +51,7 @@ class DummyVGG(MODEL_BASE):
             self._model.add(Dense(TARGET_DIM, activation='sigmoid'))
             self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,
-                  metrics=['accuracy'])
+                  metrics=self.metrics)
         return self._model
 
 
@@ -80,7 +80,7 @@ class VGGARCH(MODEL_BASE):
             self._model.add(Dense(TARGET_DIM, activation=self.LL_ACTIVATION))
             self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,
-                  metrics=['accuracy'])
+                  metrics=self.metrics)
         return self._model
 
 

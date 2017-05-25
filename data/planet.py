@@ -31,6 +31,8 @@ class PlanetData(object):
                     load the train/valid dataframes for the parameters above
     
     """
+    LABEL_TO_LIST=True
+    LABEL_COLUMN='vec'
     TAGS=[
         'artisinal_mine',
         'haze',
@@ -99,6 +101,9 @@ class PlanetData(object):
         """        
         self.train_df=pd.read_csv(self.train_path(),sep=' ')
         self.valid_df=pd.read_csv(self.valid_path(),sep=' ')
+        if self.LABEL_TO_LIST:
+            self.train_df=self._label_to_list(self.train_df)
+            self.valid_df=self._label_to_list(self.valid_df)
 
 
     def save(self):
@@ -106,6 +111,8 @@ class PlanetData(object):
         """              
         self.train_df.to_csv(self.train_path(),index=False,sep=' ')
         self.valid_df.to_csv(self.valid_path(),index=False,sep=' ')
+
+
 
 
     #
@@ -146,9 +153,8 @@ class PlanetData(object):
             self.train_size=nb_rows-valid_size
         if valid_size: 
             self.valid_size=valid_size
-        if self.train_size: 
+        elif self.train_size: 
             self.valid_size=math.floor(self.train_size*valid_pct/100)
-    
 
 
     def _tags_to_vec(self,tags):
@@ -157,6 +163,25 @@ class PlanetData(object):
         """     
         tags=tags.split(' ')
         return [int(label in tags) for label in self.TAGS]
+
+
+    def _label_to_list(self,df):
+        df[self.LABEL_COLUMN]=df[self.LABEL_COLUMN].apply(self._strlist_to_list)
+        return df
+
+
+    def _strlist_to_list(self,str_or_list):
+        """ Convert a list in string form to a list
+            We must type check since:
+                - if dataframe loaded from CSV vec will be a string
+                - if dataframe created directly vec will be list
+        """
+        if type(str_or_list) is str:
+            return list(eval(str_or_list))
+        else:
+            return str_or_list
+
+
 
 
 
