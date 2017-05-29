@@ -19,8 +19,6 @@ def gen_params(train_size,valid_size,epochs=5,sample_pct=1.0):
     return epochs,s,vs
 
 
-
-
 def cos_distance(a,b,return_type=None):
     """ Cosine Distance
         returns cosine-distance between two vectors
@@ -54,6 +52,11 @@ def f2_score(y_true, y_pred,average='samples'):
 
 
 def k_f2(y_true, y_pred, threshold_shift=0,return_type=None):
+    #
+    #
+    # SEE BELOW FOR CORRECT/NOTCORRECTNESS
+    #
+    #
     beta = 2
     # just in case of hipster activation at the final layer
     y_pred = K.clip(y_pred, 0, 1)
@@ -88,6 +91,7 @@ def k_f2_micro(y_true, y_pred,return_type=None):
 
 
 def k_f2_loss(y_true, y_pred):
+    
     return 1-k_f2_micro(y_true, y_pred)
 
 
