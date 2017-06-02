@@ -1,0 +1,154 @@
+###########################################################
+#
+# GIT CONFIG
+#
+###########################################################
+
+# """ NBPY_DIR/CREATE_DIRS
+#
+#      GIT_ADD_ON_GITNB_ADD: call `git add` for new nbpy files
+#      UPDATE_ON_COMMIT: update all tracked files before `git commit`
+#      UPDATE_ON_COMMIT: call `gitnb update` before git commit in gitnb commit
+#      GIT_ADD_ON_GITNB_UPDATE: call `git add` after `gitnb update`
+#      AUTO_TRACK_ALL_NOTEBOOKS: `gitnb add` all notebooks before `git commit`
+#
+# """
+GIT_ADD_ON_GITNB_ADD: True
+UPDATE_ON_COMMIT: True
+UPDATE_ON_GITNB_COMMIT: True
+#
+# SET THESE TO True ( and use gitnb commit ) FOR LAZY CONFIG 
+# - (https://github.com/brookisme/gitnb#lazy)
+#
+GIT_ADD_ON_GITNB_UPDATE: False
+AUTO_TRACK_ALL_NOTEBOOKS: False
+
+
+###########################################################
+#
+# DIRECTORY/FILE CONFIG
+#
+###########################################################
+
+# """ NBPY_DIR/CREATE_DIRS
+#     - NBPY_DIR:  
+#         - direcotry to save .nbpy.py files
+#         - if None: 
+#               - files will be saved in the same dir as the associated notebook
+#     - NBPY_NB_DIR:  
+#         - direcotry to save .nbpy.ipynb files
+#         - if None: 
+#               - files will be saved in the same dir as the associated py file
+#
+#     - CREATE_DIRS:  if true directories will be created as needed
+# """
+NBPY_DIR: nbpy
+NBPY_NB_DIR: nbpy_nb
+CREATE_DIRS: True
+
+# """ EXCLUDE_DIRS
+#     - list of directories to exclude when using gitnb.convert_all
+# """
+EXCLUDE_DIRS:
+    - .ipynb_checkpoints
+    - .git
+    - .gitnb
+    - nbpy_nb
+
+# """ NBPY(_NB)_IDENT
+#     - an identifer in filenames to marke that it was generated from an ipynb
+
+#     examples:  
+#         - NBPY_IDENT: 'nbpy'
+#           somenotebook.ipynb : > somenotebook.nbpy.py
+#         - NBPY_IDENT: None
+#           somenotebook.ipynb : > somenotebook.py
+# """
+NBPY_IDENT: nbpy
+NBPY_NB_IDENT: nbpy
+
+# """ AUTO_ADD_NBPY
+#     - if True .nbpy.py files will be added to the git repo upon generation
+# """
+AUTO_ADD_NBPY: True
+
+
+
+
+###########################################################
+#
+# CELl SPACING
+#
+###########################################################
+
+# """ EMPTY_LINE
+#     string to place in the lines before/after given below
+# """
+EMPTY_LINE: ''
+
+
+# """ LINES_BEFORE/AFTER
+#     The number of EMPTY_LINEs to include before/after each
+#     - HEADER:  empyt lines are included even if HEADER_KEYS: []
+#     - SOURCE:  the input cell
+#     - OUTPUTS:  the output cell
+# """
+LINES_BEFORE_HEADER: 2
+LINES_AFTER_HEADER: 0
+LINES_BEFORE_SOURCE: 2
+LINES_AFTER_SOURCE: 0
+LINES_BEFORE_OUTPUTS: 2
+LINES_AFTER_OUTPUTS: 0
+LINES_BETWEEN_OUTPUTS: 1
+
+
+
+
+###########################################################
+#
+# nbpy.py file CONFIG
+#
+###########################################################
+
+# """ INCLUDE_OUTPUT
+#     - if True output cells will be included in nbpy.py file
+#     - We strongly suggest False : )
+# """
+INCLUDE_OUTPUT: False
+
+# """ HEADERS
+#     Headers will appear before the cell block with meta-data.
+#     - HEADER_KEYS: 
+#         - list of keys for meta-data that can be included in header
+#         - if None (suggest) no header will be included
+#         - options: 
+#             - execution_count:  (the input/ouput number)
+#             - cell_type:  (code|markdown|raw) 
+#                 note - cell_type is already included in block markers
+#     - HEADER_LABEL/START/END
+#         - how to block off the header data
+# """
+HEADER_KEYS: [] 
+HEADER_LABEL: cell-data
+HEADER_START: '"""{}'
+HEADER_END: '"""'
+
+
+
+
+###########################################################
+#
+# nbpy.ipynb file CONFIG
+#
+###########################################################
+# """ TAB_SIZE
+#   tabsize for ipynb files.  note unless you are in the 
+#   habit of looking at your raw ipynb json you'll probably
+#   never see it :)
+# """
+TAB_SIZE: 4
+
+
+
+
+
