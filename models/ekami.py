@@ -9,6 +9,8 @@ import numpy as np
 
 from models.base import MODEL_BASE
 
+from utils import step_act
+
 #########################################################################################
 #
 # BASED OFF: https://www.kaggle.com/ekami66/step-by-step-solution-with-keras-0-89-on-lb
@@ -88,6 +90,26 @@ class EKAMI(MODEL_BASE):
             self._model=FCBlock(self._model)
             self._model=FCBlock(self._model,512)
             self._model.add(Dense(self.target_dim, activation='sigmoid'))
+            self._model.compile(loss=self.loss_func, 
+                  optimizer=self.optimizer,
+                  metrics=self.metrics)
+        return self._model
+
+
+
+class EKPLUS(MODEL_BASE):
+    def model(self):
+        if not self._model:
+            self._model=Sequential()
+            self._model.add(BatchNormalization(batch_input_shape=self.batch_input_shape))
+            self._model=ConvBlock(self._model,32)
+            self._model=ConvBlock(self._model,64)
+            self._model=ConvBlock(self._model,16)
+            self._model.add(Flatten())
+            self._model=FCBlock(self._model)
+            self._model=FCBlock(self._model,512)
+            self._model.add(Dense(self.target_dim, activation='sigmoid'))
+            self._model.add(Dense(self.target_dim, activation=step_act))
             self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,
                   metrics=self.metrics)

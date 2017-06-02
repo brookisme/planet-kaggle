@@ -1,30 +1,4 @@
-# Mac / Local
-.DS_Store
-tmp/
 
-# Python / Tests
-*.pyc
-pip-selfcheck.json
-man
-
-# drive
-.gd
-
-# Virtualenv
-.Python
-bin
-lib
-include
-
-# Codebase
-playground.py
-
-# PYPI
-dist/
-MANIFEST
-
-# SUBLIME
-sftp-config.json
 
 
 
@@ -39,6 +13,7 @@ sftp-config.json
 .ipynb_checkpoints
 
 # nbgit files
+.gitnb/
 nbpy_nb/ 
 
 
