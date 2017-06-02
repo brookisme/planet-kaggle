@@ -54,6 +54,7 @@ EXCLUDE_DIRS:
     - .git
     - .gitnb
     - nbpy_nb
+    - nb_archive
 
 # """ NBPY(_NB)_IDENT
 #     - an identifer in filenames to marke that it was generated from an ipynb
