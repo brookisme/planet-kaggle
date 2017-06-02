@@ -5,7 +5,7 @@ import pandas as pd
 
 
 DATA_ROOT=os.environ.get('DATA')
-DATA_DIR='planet-old'
+DATA_DIR='planet'
 ROOT=f'{DATA_ROOT}/{DATA_DIR}'
 LABEL_CSV=os.path.join(ROOT,'train.csv')
 

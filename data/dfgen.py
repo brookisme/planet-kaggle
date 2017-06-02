@@ -6,7 +6,7 @@ import numpy as np
 
 
 DATA_ROOT=os.environ.get('DATA')
-DATA_DIR='planet-old'
+DATA_DIR='planet'
 ROOT=f'{DATA_ROOT}/{DATA_DIR}'
 JPG_DIR = os.path.join(ROOT, 'train-jpg')
 TIF_DIR = os.path.join(ROOT, 'train-tif')
