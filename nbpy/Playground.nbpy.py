@@ -285,3 +285,104 @@ utils.f2_score(trues,preds)
 """"""
 
 
+"""[code]"""
+model=ek_bc.model()
+""""""
+
+
+"""[code]"""
+for layer in model.layers:
+    layer.trainable=False
+""""""
+
+
+"""[code]"""
+model.add(Dense(17))
+model.add(Stepfunc())
+""""""
+
+
+"""[code]"""
+model.summary()
+""""""
+
+
+"""[code]"""
+model.compile(
+    loss='binary_crossentropy',
+    optimizer='adam',
+    metrics=['accuracy',utils.k_f2])
+""""""
+
+
+"""[code]"""
+fit_gen(model,epochs=2,pdata=pld,sample_pct=1)
+""""""
+
+
+"""[code]"""
+#
+# Prediction for random image in dataframe df
+#
+def _image_path(name=None,file_ext=None,data_root=DATA_DIR,image_dir=None):
+    fpath=f'{data_root}'
+    if image_dir: fpath=f'{fpath}/{image_dir}'
+    fpath=f'{fpath}/{name}'
+    if file_ext: fpath=f'{fpath}.{file_ext}'
+    return fpath
+
+def pr(model,df,file_ext='tif',image_dir='train-tif',noisy=True,return_image=False):
+    imdf=df.sample()
+    im_name=imdf.image_name.values[0]
+    image=io.imread(_image_path(im_name,'tif',DATA_DIR,'train-tif'))
+    pred=model.predict(np.expand_dims(image, axis=0))
+    vec=imdf.vec.values[0]
+    prediction=[int(round(i)) for i in pred[0]]
+    eq=np.array_equal(vec,prediction)
+    loss=utils.cos_distance(vec,prediction,return_type='float')
+    loss="%.3f" % round(loss,3)
+    if noisy:
+        print('\nimage:',im_name)
+        print('vec:',vec)
+        print('prd:',prediction)
+        print('equal:',eq)
+        print('dist:',loss)
+    if return_image:
+        return loss, eq, im_name, img
+    else:
+        return vec, prediction
+
+
+""""""
+
+
+"""[code]"""
+pr(model,pld.train_df)
+""""""
+
+
+"""[code]"""
+pr(model,pld.train_df)
+""""""
+
+
+"""[code]"""
+pr(model,pld.train_df)
+""""""
+
+
+"""[code]"""
+pr(model,pld.train_df)
+""""""
+
+
+"""[code]"""
+pr(model,pld.train_df)
+""""""
+
+
+"""[code]"""
+pr(model,pld.train_df)
+""""""
+
+
