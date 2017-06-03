@@ -9,7 +9,7 @@ import numpy as np
 
 from models.base import MODEL_BASE
 
-from utils import step_act
+from activations.stepfunc import Stepfunc
 
 #########################################################################################
 #
@@ -109,7 +109,8 @@ class EKPLUS(MODEL_BASE):
             self._model=FCBlock(self._model)
             self._model=FCBlock(self._model,512)
             self._model.add(Dense(self.target_dim, activation='sigmoid'))
-            self._model.add(Dense(self.target_dim, activation=step_act))
+            self._model.add(Dense(self.target_dim))
+            self._model.add(Stepfunc())
             self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,
                   metrics=self.metrics)

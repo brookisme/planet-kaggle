@@ -94,8 +94,5 @@ def k_f2_loss(y_true, y_pred):
     return 1-k_f2_micro(y_true, y_pred)
 
 
-def step_act(value):
-    return K.round(value)
-
 
 
