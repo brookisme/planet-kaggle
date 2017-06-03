@@ -17,7 +17,7 @@ class DFGen():
         Usage:
             train_gen=DFGen(
                 dataframe=train_dataframe,batch_size=128)
-            next(train_gen.data())
+            next(train_gen)
 
         Args:
             dataframe: <dataframe> dataframe with label and image_path column
@@ -38,6 +38,7 @@ class DFGen():
             image_ext='tif',
             image_dir=None,
             batch_size=32):
+        self.batch_index=0
         self.file=file
         self.batch_size=batch_size
         self.image_ext=image_ext
@@ -45,22 +46,21 @@ class DFGen():
         self._set_data(file,dataframe)
 
 
-
-    def data(self):
-        """Data Generator
+    def __next__(self):
+        """
             batchwise return tuple of (images,labels)
         """        
-        batch_index=0
-        while True:
-            start=batch_index*self.batch_size
-            if ((start+self.batch_size)>=self.size):
-                self.labels, self.paths = shuffle(self.labels,self.paths)
-                batch_index=0
-            batch_labels=self.labels[start:start+self.batch_size]
-            batch_paths=self.paths[start:start+self.batch_size]
-            batch_imgs=[self._imdata(img) for img in batch_paths]
-            yield np.array(batch_imgs),np.array(batch_labels)
-            batch_index+=1
+        start=self.batch_index*self.batch_size
+        end=start+self.batch_size
+        if (end>=self.size):
+            self.labels, self.paths = shuffle(self.labels,self.paths)
+            self.batch_index=0
+        batch_labels=self.labels[start:end]
+        batch_paths=self.paths[start:end]
+        batch_imgs=[self._imdata(img) for img in batch_paths]
+        batch_imgs=batch_paths
+        self.batch_index+=1
+        return np.array(batch_imgs),np.array(batch_labels)
     
     
     #
