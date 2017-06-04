@@ -34,23 +34,23 @@ class PlanetData(object):
     LABEL_TO_LIST=True
     LABEL_COLUMN='vec'
     TAGS=[
-        'artisinal_mine',
-        'haze',
-        'water',
-        'conventional_mine',
-        'agriculture',
-        'cultivation',
-        'bare_ground',
         'primary',
-        'habitation',
-        'partly_cloudy',
-        'blooming',
-        'blow_down',
-        'slash_burn',
-        'road',
         'clear',
+        'agriculture',
+        'road',
+        'water',
+        'partly_cloudy',
+        'cultivation',
+        'habitation',
+        'haze',
+        'cloudy',
+        'bare_ground',
         'selective_logging',
-        'cloudy']
+        'artisinal_mine',
+        'blooming',
+        'slash_burn',
+        'conventional_mine',
+        'blow_down']
 
 
     def __init__(self,
