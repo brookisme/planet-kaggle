@@ -9,7 +9,7 @@ import utils
 import numpy as np
 from skimage import io
 
-from data.dfgen import DFGen
+from helpers.dfgen import DFGen
 
 
 #
@@ -89,7 +89,8 @@ class MODEL_BASE(object):
             train_gen=None,
             valid_gen=None,
             sample_pct=1.0,
-            batch_size=32):
+            batch_size=32,
+            ndvi_images=False):
         """ call fit_generator 
             Args:
                 -   if pdata (instance of <data.planent:PlanetData>) 
@@ -100,9 +101,9 @@ class MODEL_BASE(object):
             train_sz=pdata.train_size
             valid_sz=pdata.valid_size
             train_gen=DFGen(
-                dataframe=pdata.train_df,batch_size=batch_size).data()
+                dataframe=pdata.train_df,batch_size=batch_size,ndvi_images=ndvi_images)
             valid_gen=DFGen(
-                dataframe=pdata.valid_df,batch_size=batch_size).data()
+                dataframe=pdata.valid_df,batch_size=batch_size,ndvi_images=ndvi_images)
 
         nb_epochs,steps,validation_steps=utils.gen_params(
             train_sz,valid_sz,epochs,sample_pct)

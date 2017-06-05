@@ -37,11 +37,13 @@ class DFGen():
             dataframe=None,
             image_ext='tif',
             image_dir=None,
+            ndvi_images=False,
             batch_size=32):
         self.batch_index=0
         self.file=file
         self.batch_size=batch_size
         self.image_ext=image_ext
+        self.ndvi_images=ndvi_images
         self._set_image_dir(image_dir)
         self._set_data(file,dataframe)
 
@@ -58,7 +60,6 @@ class DFGen():
         batch_labels=self.labels[start:end]
         batch_paths=self.paths[start:end]
         batch_imgs=[self._imdata(img) for img in batch_paths]
-        batch_imgs=batch_paths
         self.batch_index+=1
         return np.array(batch_imgs),np.array(batch_labels)
     
@@ -71,8 +72,22 @@ class DFGen():
             Args:
                 path: <str> path to image
         """
-        return io.imread(path)
+        if self.ndvi_images:
+            return self._ndviimg(io.imread(path))
+        else:
+            return io.imread(path)
     
+
+    def _ndvi(self,img):
+        r=img[:,:,0]
+        nir=img[:,:,3]
+        return (nir-r)/(nir+r)
+
+
+    def _ndviimg(self,img):
+        ndvi_band=self._ndvi(img)
+        img[:,:,3]=ndvi_band
+        return img
 
 
     def _set_image_dir(self,image_dir):

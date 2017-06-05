@@ -2,6 +2,7 @@ import os
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, BatchNormalization, Flatten
+from keras.layers.core import Lambda
 from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
@@ -79,10 +80,23 @@ def FCBlock(model,output_dim=256,dr=0.5):
 
 
 class EKAMI(MODEL_BASE):
+
+    def __init__(self,lmbda=None,**kwargs):
+        self.lmbda=lmbda
+        print(self.lmbda,kwargs)
+        super().__init__(**kwargs)
+
+
     def model(self):
         if not self._model:
             self._model=Sequential()
-            self._model.add(BatchNormalization(batch_input_shape=self.batch_input_shape))
+            if self.lmbda:
+                print("adding lambda...",self.batch_input_shape)
+                self._model.add(Lambda(self.lmbda,batch_input_shape=self.batch_input_shape))
+                self._model.add(BatchNormalization())
+            else:
+                print("start with batch norm...",self.batch_input_shape)
+                self._model.add(BatchNormalization(batch_input_shape=self.batch_input_shape))
             self._model=ConvBlock(self._model,32)
             self._model=ConvBlock(self._model,64)
             self._model=ConvBlock(self._model,16)
