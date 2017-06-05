@@ -72,16 +72,18 @@ class DFGen():
             Args:
                 path: <str> path to image
         """
+        img=io.imread(path)
         if self.ndvi_images:
-            return self._ndviimg(io.imread(path))
+            return self._ndviimg(img)
         else:
-            return io.imread(path)
+            return img
     
 
     def _ndvi(self,img):
         r=img[:,:,0]
         nir=img[:,:,3]
         return (nir-r)/(nir+r)
+
 
 
     def _ndviimg(self,img):
