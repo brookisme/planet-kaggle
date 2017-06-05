@@ -17,6 +17,7 @@ import utils
 """[code]"""
 from skimage import io
 from keras import backend as K
+from keras.optimizers import Adam # lr=0.001
 """"""
 
 
@@ -317,12 +318,25 @@ af_bn_ndvi_bc=af.Flex(loss_func='binary_crossentropy',batch_norm=True,metrics=['
 
 
 """[code]"""
-af_bn_ndvi_bc.model().summary()
+#af_bn_ndvi_bc.model().summary()
 """"""
 
 
 """[code]"""
-af_bn_ndvi_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=True)
+# af_bn_ndvi_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=True)
+""""""
+
+
+"""[code]"""
+af_bn_ndvi_bc_fast=af.Flex(
+    loss_func='binary_crossentropy',
+    batch_norm=True,
+    metrics=['accuracy',utils.k_f2],
+    optimizer=Adam(lr=0.01))
+af_bn_ndvi_bc_fast.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=True)
+
+
+
 """"""
 
 
