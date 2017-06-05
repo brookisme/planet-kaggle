@@ -82,9 +82,62 @@ Epoch 2/2
 
 
 """[code]"""
-flex_bc=af.Flex(metrics=['accuracy',utils.k_f2])
-flex_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+# flex_bc=af.Flex(metrics=['accuracy',utils.k_f2])
+# flex_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
 """"""
+
+
+"""[code]"""
+af.Flex(metrics=['accuracy',utils.k_f2]).model().summary()
+""""""
+
+
+"""[raw]
+Epoch 1/2
+125/125 [==============================] - 309s - loss: 0.2547 - acc: 0.9024 - k_f2: 0.6154 - val_loss: 0.2300 - val_acc: 0.9076 - val_k_f2: 0.6551
+Epoch 2/2
+125/125 [==============================] - 309s - loss: 0.1810 - acc: 0.9297 - k_f2: 0.7066 - val_loss: 0.2046 - val_acc: 0.9301 - val_k_f2: 0.7066
+"""
+
+
+"""[markdown]
+## FLEXY FLEX
+"""
+
+
+"""[code]"""
+conv_layers=[
+    (32,[3,6,12]),
+    (16,[3,5])]
+
+fc_layers=[
+    256,
+    512,
+    128]
+""""""
+
+
+"""[code]"""
+flex_bc_a=af.Flex(conv_layers=conv_layers,fc_layers=fc_layers,metrics=['accuracy',utils.k_f2])
+""""""
+
+
+"""[code]"""
+flex_bc_a.model().summary()
+""""""
+
+
+"""[code]"""
+flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+""""""
+
+
+
+
+
+
+
+
 
 
 """[markdown]
@@ -102,3 +155,7 @@ ek_bc_01.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
 flex_bc_01=af.Flex(metrics=['accuracy',utils.k_f2],optimizer=Adam(lr=0.01))
 flex_bc_01.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
 """"""
+
+
+
+
