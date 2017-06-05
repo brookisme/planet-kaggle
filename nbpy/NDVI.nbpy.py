@@ -263,7 +263,7 @@ img
 
 
 """[code]"""
-K.eval(ndvit(img,2))
+K.eval(ndvit(K.variable(img),2))
 """"""
 
 
@@ -274,7 +274,7 @@ K.eval(ndvit(img,2))
 
 """[code]"""
 # pld=data.PlanetData(create=True,train_size=100)
-pld=data.PlanetData(train_size=100)
+pld=data.PlanetData(train_size=300)
 """"""
 
 
@@ -285,6 +285,12 @@ ek_lmbd_bc=ek.EKAMI(loss_func='binary_crossentropy')
 
 """[code]"""
 ek_lmbd_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=True)
+""""""
+
+
+"""[code]"""
+ek_no_bc=ek.EKAMI(loss_func='binary_crossentropy')
+ek_no_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
 """"""
 
 

@@ -63,17 +63,19 @@ from activations.stepfunc import Stepfunc
 #
 # COMMON BLOCKS
 #
-def ConvBlock(model,filters,layers=1):
+def ConvBlock(model,filters,layers=1,batch_norm=False):
     for i in range(layers):
         model.add(ZeroPadding2D((1, 1)))
         model.add(Conv2D(filters, (3, 3), activation='relu'))
+    if batch_norm: model.add(BatchNormalization())
     model.add(MaxPooling2D(pool_size=(2, 2)))
     return model
 
 
 
-def FCBlock(model,output_dim=256,dr=0.5):
+def FCBlock(model,output_dim=256,batch_norm=False,dr=0.5):
     model.add(Dense(output_dim, activation='relu'))
+    if batch_norm: model.add(BatchNormalization())
     model.add(Dropout(dr))
     return model
 
@@ -81,9 +83,9 @@ def FCBlock(model,output_dim=256,dr=0.5):
 
 class EKAMI(MODEL_BASE):
 
-    def __init__(self,lmbda=None,**kwargs):
+    def __init__(self,lmbda=None,batch_norm=False,**kwargs):
         self.lmbda=lmbda
-        print(self.lmbda,kwargs)
+        self.batch_norm=batch_norm
         super().__init__(**kwargs)
 
 
@@ -97,12 +99,12 @@ class EKAMI(MODEL_BASE):
             else:
                 print("start with batch norm...",self.batch_input_shape)
                 self._model.add(BatchNormalization(batch_input_shape=self.batch_input_shape))
-            self._model=ConvBlock(self._model,32)
-            self._model=ConvBlock(self._model,64)
-            self._model=ConvBlock(self._model,16)
+            self._model=ConvBlock(self._model,32,batch_norm=self.batch_norm)
+            self._model=ConvBlock(self._model,64,batch_norm=self.batch_norm)
+            self._model=ConvBlock(self._model,16,batch_norm=self.batch_norm)
             self._model.add(Flatten())
-            self._model=FCBlock(self._model)
-            self._model=FCBlock(self._model,512)
+            self._model=FCBlock(self._model,batch_norm=self.batch_norm)
+            self._model=FCBlock(self._model,512,batch_norm=self.batch_norm)
             self._model.add(Dense(self.target_dim, activation='sigmoid'))
             self._model.compile(loss=self.loss_func, 
                   optimizer=self.optimizer,

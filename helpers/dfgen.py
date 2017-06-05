@@ -80,7 +80,7 @@ class DFGen():
     
 
     def _ndvi(self,img):
-        r=img[:,:,0]
+        r=img[:,:,2]
         nir=img[:,:,3]
         return (nir-r)/(nir+r)
 
