@@ -25,7 +25,7 @@ BATCH_INPUT_SHAPE=(None,256,256,BANDS)
 TARGET_DIM=17
 DEFAULT_OPT='adam'
 DEFAULT_DR=0.5
-DEFAULT_LOSS_FUNC=utils.cos_distance
+DEFAULT_LOSS_FUNC='binary_crossentropy'
 DEFAULT_METRICS=['accuracy']
 
 
@@ -48,12 +48,14 @@ class MODEL_BASE(object):
             optimizer=DEFAULT_OPT,
             loss_func=DEFAULT_LOSS_FUNC,
             target_dim=TARGET_DIM,
-            metrics=DEFAULT_METRICS):
+            metrics=DEFAULT_METRICS,
+            auto_compile=True):
         self.batch_input_shape=batch_input_shape
         self.optimizer=optimizer
         self.loss_func=loss_func
         self.target_dim=target_dim
         self.metrics=metrics
+        self.auto_compile=auto_compile
         self._model=None
 
 
@@ -63,6 +65,33 @@ class MODEL_BASE(object):
 
     def save_weights(self,name,path=WEIGHT_DIR):
         self.model().save_weights(f'{path}/{name}')
+
+
+    def model(self):
+        print("ERROR[MODEL_BASE]: MUST OVERWRITE .model()")
+        if not self._model:
+            self._model=Sequential()
+            if self.auto_compile: self._model.compile()
+        return self._model
+
+
+    def compile(self,loss_func=None,optimizer=None,metrics=None,reset_defaults=True):
+        if loss_func:
+            if reset_defaults: self.loss_func=loss_func
+        else:
+            loss_func=self.loss_func
+        if optimizer:
+            if reset_defaults: self.loss_func=loss
+        else:
+            optimizer=self.optimizer
+        if metrics:
+            if reset_defaults: self.loss_func=loss
+        else:
+            metrics=self.metrics
+        return self._model.compile(
+            loss=loss_func, 
+            optimizer=optimizer,
+            metrics=metrics)
 
 
     def predict_image(self,
