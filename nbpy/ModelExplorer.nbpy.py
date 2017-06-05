@@ -52,9 +52,33 @@ pld=data.PlanetData(train_size=250)
 
 
 """[code]"""
-ek_bc=ek.EKAMI(metrics=['accuracy',utils.k_f2])
-ek_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+# ek_bc=ek.EKAMI(metrics=['accuracy',utils.k_f2])
+# ek_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
 """"""
+
+
+"""[raw]
+start with batch norm... (None, 256, 256, 4)
+Epoch 1/2
+125/125 [==============================] - 313s - loss: 0.2542 - acc: 0.9029 - k_f2: 0.6155 - val_loss: 0.2693 - val_acc: 0.8860 - val_k_f2: 0.6009
+Epoch 2/2
+125/125 [==============================] - 308s - loss: 0.1458 - acc: 0.9444 - k_f2: 0.7743 - val_loss: 0.2877 - val_acc: 0.8993 - val_k_f2: 0.6359
+"""
+
+
+"""[code]"""
+### BEFORE FLEX FLEXIBILITY
+# flex_bc=af.Flex(metrics=['accuracy',utils.k_f2])
+# flex_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+""""""
+
+
+"""[raw]
+Epoch 1/2
+125/125 [==============================] - 308s - loss: 0.2525 - acc: 0.9043 - k_f2: 0.6189 - val_loss: 0.2537 - val_acc: 0.9085 - val_k_f2: 0.5933
+Epoch 2/2
+125/125 [==============================] - 308s - loss: 0.1733 - acc: 0.9334 - k_f2: 0.7196 - val_loss: 0.2538 - val_acc: 0.9163 - val_k_f2: 0.6580
+"""
 
 
 """[code]"""
@@ -64,7 +88,7 @@ flex_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
 
 
 """[markdown]
-## NO BATCH NORM - NO NDVI -  LR
+## NO BATCH NORM - NO NDVI -  LR*10
 """
 
 
