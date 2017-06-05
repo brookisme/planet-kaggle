@@ -23,6 +23,7 @@ from keras import backend as K
 """[code]"""
 import models.vgglike as vl
 import models.ekami as ek
+import models.aframe as af
 import helpers.planet as data
 import helpers.dfgen as gen
 # import data.planet as data
@@ -279,7 +280,7 @@ pld=data.PlanetData(train_size=300)
 
 
 """[code]"""
-ek_lmbd_bc=ek.EKAMI(loss_func='binary_crossentropy')
+ek_lmbd_bc=ek.EKAMI(loss_func='binary_crossentropy',metrics=['accuracy',utils.k_f2])
 """"""
 
 
@@ -289,8 +290,39 @@ ek_lmbd_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=True)
 
 
 """[code]"""
-ek_no_bc=ek.EKAMI(loss_func='binary_crossentropy')
+ek_no_bc=ek.EKAMI(loss_func='binary_crossentropy',metrics=['accuracy',utils.k_f2])
 ek_no_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+""""""
+
+
+"""[markdown]
+## W/ BATCH NORM
+"""
+
+
+"""[code]"""
+ek_bn_ndvi_bc=ek.EKAMI(loss_func='binary_crossentropy',batch_norm=True,metrics=['accuracy',utils.k_f2])
+ek_bn_ndvi_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=True)
+""""""
+
+
+"""[markdown]
+## Flex take 1
+"""
+
+
+"""[code]"""
+af_bn_ndvi_bc=af.Flex(loss_func='binary_crossentropy',batch_norm=True,metrics=['accuracy',utils.k_f2])
+""""""
+
+
+"""[code]"""
+af_bn_ndvi_bc.model().summary()
+""""""
+
+
+"""[code]"""
+af_bn_ndvi_bc.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=True)
 """"""
 
 
