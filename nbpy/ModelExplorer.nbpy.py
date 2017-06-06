@@ -128,7 +128,31 @@ flex_bc_a.model().summary()
 
 
 """[code]"""
-flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=0.15,ndvi_images=False)
+# flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=0.15,ndvi_images=False)
+""""""
+
+
+"""[raw]
+Epoch 1/2
+18/18 [==============================] - 840s - loss: 0.4224 - acc: 0.8330 - k_f2: 0.5242 - val_loss: 0.5730 - val_acc: 0.9213 - val_k_f2: 0.6572
+Epoch 2/2
+18/18 [==============================] - 825s - loss: 0.3300 - acc: 0.8856 - k_f2: 0.5669 - val_loss: 0.2401 - val_acc: 0.9259 - val_k_f2: 0.6769
+"""
+
+
+"""[code]"""
+# flex_bc_a.save_weights('flex3612_a')
+flex_bc_a.load_weights('flex3612_a')
+""""""
+
+
+"""[code]"""
+flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+""""""
+
+
+"""[code]"""
+flex_bc_a.save_weights('flex3612_b')
 """"""
 
 
@@ -142,8 +166,9 @@ flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
 """"""
 
 
-
-
+"""[code]"""
+flex_bc_a.save_weights('flex3612_c')
+""""""
 
 
 """[markdown]
