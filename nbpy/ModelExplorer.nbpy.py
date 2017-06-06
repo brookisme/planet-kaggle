@@ -128,12 +128,18 @@ flex_bc_a.model().summary()
 
 
 """[code]"""
-flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=0.15,ndvi_images=False)
 """"""
 
 
+"""[code]"""
+flex_bc_a.compile(optimizer=Adam(lr=0.01))
+""""""
 
 
+"""[code]"""
+flex_bc_a.fit_gen(epochs=2,pdata=pld,sample_pct=1,ndvi_images=False)
+""""""
 
 
 
