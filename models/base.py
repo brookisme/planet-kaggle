@@ -81,11 +81,11 @@ class MODEL_BASE(object):
         else:
             loss_func=self.loss_func
         if optimizer:
-            if reset_defaults: self.loss_func=loss
+            if reset_defaults: self.optimizer=optimizer
         else:
             optimizer=self.optimizer
         if metrics:
-            if reset_defaults: self.loss_func=loss
+            if reset_defaults: self.metrics=metrics
         else:
             metrics=self.metrics
         return self._model.compile(
