@@ -127,8 +127,8 @@ class MODEL_BASE(object):
                 -   otherwise used passed params
         """
         if pdata:
-            train_sz=pdata.train_size
-            valid_sz=pdata.valid_size
+            if not train_sz: train_sz=pdata.train_size
+            if not valid_sz: valid_sz=pdata.valid_size
             train_gen=DFGen(
                 dataframe=pdata.train_df,batch_size=batch_size,ndvi_images=ndvi_images)
             valid_gen=DFGen(

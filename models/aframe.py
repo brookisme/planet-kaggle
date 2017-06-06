@@ -52,11 +52,9 @@ class Flex(MODEL_BASE):
             else:
                 x=BatchNormalization()(inputs)
             for filters,sizes in self.conv_layers:
-                print("CONV:",filters,sizes)
                 x=self._conv_block(x,filters,sizes)
             x=Flatten()(x)
             for output_dim in self.fc_layers:
-                print("FC:",output_dim)
                 x=self._fc_block(x,output_dim=output_dim)
             outputs=Dense(self.target_dim, activation='sigmoid')(x)
             self._model=Model(inputs=inputs,outputs=outputs)
