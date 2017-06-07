@@ -9,6 +9,34 @@ DATA_DIR='planet'
 ROOT=f'{DATA_ROOT}/{DATA_DIR}'
 LABEL_CSV=os.path.join(ROOT,'train.csv')
 
+"""
+    - TAGS: PD.prop => CONST
+    - tags: as prop pd.tags=... (set in init)
+    - df.tags (with all the tags) => df.tags (only for tags in pd.tags)
+        df['tags']=df.tags.apply(method_to_strip_unused_tags)
+    
+"""
+
+TAGS=[
+    'primary',
+    'clear',
+    'agriculture',
+    'road',
+    'water',
+    'partly_cloudy',
+    'cultivation',
+    'habitation',
+    'haze',
+    'cloudy',
+    'bare_ground',
+    'selective_logging',
+    'artisinal_mine',
+    'blooming',
+    'slash_burn',
+    'conventional_mine',
+    'blow_down']
+    
+    
 class PlanetData(object):
     """ CONSTRUCTS TRAINING/VALIDATION DATAFRAMES
 
@@ -16,7 +44,8 @@ class PlanetData(object):
             - train_size:
                 <int> number of training examples
                 <str> 'full' based on full use of dataset
-            - labels_df: Labels dataframe
+            - labels_df: Labels dataframe, could also pass a path in csv_path
+            -tags: list of strings, the subset of TAGS which will be used as target 
             - csv_path: (if labels_df not given) path to labels CSV
             - valid_size: <int> number of validation examples
             - valid_pct: 
@@ -33,24 +62,7 @@ class PlanetData(object):
     """
     LABEL_TO_LIST=True
     LABEL_COLUMN='vec'
-    TAGS=[
-        'primary',
-        'clear',
-        'agriculture',
-        'road',
-        'water',
-        'partly_cloudy',
-        'cultivation',
-        'habitation',
-        'haze',
-        'cloudy',
-        'bare_ground',
-        'selective_logging',
-        'artisinal_mine',
-        'blooming',
-        'slash_burn',
-        'conventional_mine',
-        'blow_down']
+
 
 
     def __init__(self,
@@ -59,6 +71,7 @@ class PlanetData(object):
             valid_size=None,
             csv_path=LABEL_CSV,
             labels_df=None,
+            tags=TAGS,
             version=1,
             create=False,
             auto_save=True,
@@ -67,6 +80,7 @@ class PlanetData(object):
         self.version=version
         self.auto_save=auto_save
         self.auto_clear=auto_clear
+        self.tags=tags
         if create:
             self._set_label_df(labels_df,csv_path)
             self._set_df_sizes(train_size,valid_size,valid_pct)
@@ -82,7 +96,8 @@ class PlanetData(object):
         if self.is_full:
             name=f'training_data_v{self.version}.csv'
         else:
-            name=f'training_data_{self.train_size}_v{self.version}.csv'
+            # add binary tag-string to name if using a subset of TAGS
+            name=f'training_data_{self.train_size}_v{self.version}_{self._tags_to_string()}.csv'
         return f'{ROOT}/{name}'
 
     
@@ -92,7 +107,7 @@ class PlanetData(object):
         if self.is_full:
             name=f'validation_data_v{self.version}.csv'
         else:
-            name=f'validation_data_{self.valid_size}_v{self.version}.csv'
+            name=f'validation_data_{self.valid_size}_v{self.version}_{self._tags_to_string()}.csv'
         return f'{ROOT}/{name}'
 
 
@@ -125,7 +140,14 @@ class PlanetData(object):
 
 
     def _set_label_df(self,labels_df,csv_path):
+        """ Takes or creates a dataframe. 
+            Restricts the tags to those in self.tags.
+            Sets a new column labelled vec which takes value in a 
+            binary valued vector representing the tags   """
+            
         self.labels_df=labels_df or pd.read_csv(csv_path)
+        self.labels_df['tags']=self.labels_df.tags.str.split().apply((lambda x: ''.join(ele+' ' for ele in x if ele in self.tags)))
+        splittags= self.labels_df.tags.str.split()
         self.labels_df['vec']=self.labels_df.tags.apply(self._tags_to_vec)
 
 
@@ -158,11 +180,13 @@ class PlanetData(object):
 
 
     def _tags_to_vec(self,tags):
-        """ Convert Tags to a List Vector
-            - list ordering given by TAGS property
-        """     
+        """ The input tags is a string containing space-seperated 
+            strings, the labels. This is converted to a binary-valued List Vector
+            - list ordering given by global TAGS or the tags property
+        """
+        # make sure the binary vec is created from restricted tags     
         tags=tags.split(' ')
-        return [int(label in tags) for label in self.TAGS]
+        return [int(label in tags) for label in self.tags]
 
 
     def _label_to_list(self,df):
@@ -180,7 +204,12 @@ class PlanetData(object):
             return list(eval(str_or_list))
         else:
             return str_or_list
-
+            
+    def _tags_to_string(self):
+        """"converts a list of tags to a string of 0's and 1's 
+        to use in the csv file name"""
+        return ''.join(str(int(TAG in self.tags)) for TAG in TAGS)
+        
 
 
 
