@@ -10,7 +10,7 @@ import numpy as np
 
 from models.base import MODEL_BASE
 
-from activations.stepfunc import Stepfunc
+from activations.steepsig import Steepsig
 
 #########################################################################################
 #
@@ -123,7 +123,7 @@ class EKPLUS(MODEL_BASE):
             self._model=FCBlock(self._model,512)
             self._model.add(Dense(self.target_dim, activation='sigmoid'))
             self._model.add(Dense(self.target_dim))
-            self._model.add(Stepfunc())
+            self._model.add(Steepsig())
             if self.auto_compile: self.compile()
         return self._model
 
