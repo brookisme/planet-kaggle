@@ -4,7 +4,7 @@ from keras import backend as K
 from sklearn.metrics import fbeta_score
 
 
-def gen_params(train_size,valid_size,epochs=5,sample_pct=1.0):
+def gen_params(train_size=None,valid_size=None,epochs=5,sample_pct=1.0,sample_sizes=None):
     """ Generator Params
         returns data for fit generator
         Args:
@@ -14,8 +14,15 @@ def gen_params(train_size,valid_size,epochs=5,sample_pct=1.0):
         return:
             epochs,steps_per_epoch, validation_steps
     """
-    s=math.floor(sample_pct*train_size/epochs)
-    vs=math.floor(sample_pct*valid_size/epochs)
+    if sample_sizes:
+        train_size=sample_sizes[0]
+        valid_size=sample_sizes[1]
+    else:
+        train_size=sample_pct*train_size
+        valid_size=sample_pct*valid_size
+
+    s=math.floor(train_size/epochs)
+    vs=math.floor(valid_size/epochs)
     return epochs,s,vs
 
 

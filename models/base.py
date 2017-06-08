@@ -120,6 +120,7 @@ class MODEL_BASE(object):
             train_gen=None,
             valid_gen=None,
             sample_pct=1.0,
+            sample_sizes=None,
             batch_size=32,
             ndvi_images=False):
         """ call fit_generator 
@@ -137,7 +138,7 @@ class MODEL_BASE(object):
                 dataframe=pdata.valid_df,batch_size=batch_size,ndvi_images=ndvi_images)
 
         nb_epochs,steps,validation_steps=utils.gen_params(
-            train_sz,valid_sz,epochs,sample_pct)
+            train_sz,valid_sz,epochs,sample_pct,sample_sizes)
         return self.model().fit_generator(
             generator=train_gen, 
             validation_data=valid_gen,
