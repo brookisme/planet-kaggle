@@ -9,13 +9,7 @@ DATA_DIR='planet'
 ROOT=f'{DATA_ROOT}/{DATA_DIR}'
 LABEL_CSV=os.path.join(ROOT,'train.csv')
 
-"""
-    - TAGS: PD.prop => CONST
-    - tags: as prop pd.tags=... (set in init)
-    - df.tags (with all the tags) => df.tags (only for tags in pd.tags)
-        df['tags']=df.tags.apply(method_to_strip_unused_tags)
-    
-"""
+
 
 TAGS=[
     'primary',
@@ -45,7 +39,7 @@ class PlanetData(object):
                 <int> number of training examples
                 <str> 'full' based on full use of dataset
             - labels_df: Labels dataframe, could also pass a path in csv_path
-            -tags: list of strings, the subset of TAGS which will be used as target 
+            - tags: list of strings, the subset of TAGS which will be used as target 
             - csv_path: (if labels_df not given) path to labels CSV
             - valid_size: <int> number of validation examples
             - valid_pct: 
@@ -143,7 +137,8 @@ class PlanetData(object):
         """ Takes or creates a dataframe. 
             Restricts the tags to those in self.tags.
             Sets a new column labelled vec which takes value in a 
-            binary valued vector representing the tags   """
+            binary valued vector representing the tags   
+            """
             
         self.labels_df=labels_df or pd.read_csv(csv_path)
         self.labels_df['tags']=self.labels_df.tags.str.split().apply((lambda x: ''.join(ele+' ' for ele in x if ele in self.tags)))
@@ -208,7 +203,11 @@ class PlanetData(object):
     def _tags_to_string(self):
         """"converts a list of tags to a string of 0's and 1's 
         to use in the csv file name"""
-        return ''.join(str(int(TAG in self.tags)) for TAG in TAGS)
+        if self.tags==TAGS:
+            tag_str='ALL'
+        else:
+            tag_str=''.join(str(int(TAG in self.tags)) for TAG in TAGS)
+        return tag_str
         
 
 

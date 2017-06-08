@@ -59,12 +59,14 @@ class MODEL_BASE(object):
         self._model=None
 
 
-    def load_weights(self,name,path=WEIGHT_DIR):
-        self.model().load_weights(f'{path}/{name}')
+    def load_weights(self,pdata):
+        # We may want to allow this to pass the version number
+        self.model().load_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata._tags_to_string()}_v{pdata.version}.hdf5')
 
 
-    def save_weights(self,name,path=WEIGHT_DIR):
-        self.model().save_weights(f'{path}/{name}')
+    def save_weights(self,pdata):
+        # We may want to allow this to pass the version number
+        self.model().save_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata._tags_to_string()}_v{pdata.version}.hdf5')
 
 
     def model(self):
@@ -151,3 +153,9 @@ class MODEL_BASE(object):
         fpath=f'{fpath}/{name}'
         if file_ext: fpath=f'{fpath}.{file_ext}'
         return fpath
+
+    def _weight_path(self,pdata):
+        tag_weight_path=f'{WEIGHT_DIR}/tags_{pdata._tags_to_string()}'
+        if not os.path.isdir(tag_weight_path):
+            os.mkdir(tag_weight_path)
+        return tag_weight_path
