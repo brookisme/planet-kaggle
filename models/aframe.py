@@ -10,7 +10,6 @@ from keras.layers import Input, Dense
 from keras.models import Model
 import numpy as np
 from models.base import MODEL_BASE
-from activations.stepfunc import Stepfunc
 
 
 
