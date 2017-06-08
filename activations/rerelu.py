@@ -6,7 +6,7 @@ from keras.datasets import mnist
 from keras import backend as K
 
 
-class ReReLu(layers.Layer):
+class ReReLU(layers.Layer):
     ''' A Relu-like activation function for binary output
                  ___
         ie:  ___/
@@ -22,8 +22,8 @@ class ReReLu(layers.Layer):
         zeros=K.zeros_like(inputs)
         ones=K.ones_like(inputs)
         shape=K.shape(inputs)
-        relu=K.max(_bound_cat(zeros,inputs),axis=0)
-        rerelu=K.min(_bound_cat(ones,relu,shape),axis=0)
+        relu=K.max(self._bound_cat(zeros,inputs),axis=0)
+        rerelu=K.min(self._bound_cat(ones,relu,shape),axis=0)
         return rerelu
 
 
