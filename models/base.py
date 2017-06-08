@@ -90,7 +90,7 @@ class MODEL_BASE(object):
             if reset_defaults: self.metrics=metrics
         else:
             metrics=self.metrics
-        return self._model.compile(
+        return self.model().compile(
             loss=loss_func, 
             optimizer=optimizer,
             metrics=metrics)
