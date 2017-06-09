@@ -1,4 +1,6 @@
 import os
+import numpy as np
+from skimage import io
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, BatchNormalization, Flatten, Lambda
@@ -6,9 +8,7 @@ from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
 import utils
-import numpy as np
-from skimage import io
-
+from callbacks.lossaccf2 import LossAccF2History
 from helpers.dfgen import DFGen
 
 
@@ -27,7 +27,7 @@ DEFAULT_OPT='adam'
 DEFAULT_DR=0.5
 DEFAULT_LOSS_FUNC='binary_crossentropy'
 DEFAULT_METRICS=['accuracy']
-
+DEFAULT_HISTORY=LossAccF2History
 
 
 
@@ -57,6 +57,7 @@ class MODEL_BASE(object):
         self.metrics=metrics
         self.auto_compile=auto_compile
         self._model=None
+        self.history=None
 
 
     def load_weights(self,pdata):
@@ -122,12 +123,16 @@ class MODEL_BASE(object):
             sample_pct=1.0,
             sample_sizes=None,
             batch_size=32,
-            ndvi_images=False):
+            ndvi_images=False,
+            history=DEFAULT_HISTORY,
+            history_path=None,
+            callbacks=[]):
         """ call fit_generator 
             Args:
                 -   if pdata (instance of <data.planent:PlanetData>) 
                     use params from pdata
                 -   otherwise used passed params
+                -   history_path: <str> path to save pickle of history.
         """
         if pdata:
             if not train_sz: train_sz=pdata.train_size
@@ -137,6 +142,10 @@ class MODEL_BASE(object):
             valid_gen=DFGen(
                 dataframe=pdata.valid_df,batch_size=batch_size,ndvi_images=ndvi_images)
 
+        if history:
+            self.history=history(save_path=history_path)
+            callbacks.append(self.history)
+
         nb_epochs,steps,validation_steps=utils.gen_params(
             train_sz,valid_sz,epochs,sample_pct,sample_sizes)
         return self.model().fit_generator(
@@ -144,7 +153,8 @@ class MODEL_BASE(object):
             validation_data=valid_gen,
             steps_per_epoch=steps,
             validation_steps=validation_steps,
-            epochs=epochs, 
+            epochs=epochs,
+            callbacks=callbacks,
             verbose=self.VERBOSE)
 
 
@@ -160,3 +170,11 @@ class MODEL_BASE(object):
         if not os.path.isdir(tag_weight_path):
             os.mkdir(tag_weight_path)
         return tag_weight_path
+
+
+
+
+
+
+
+
