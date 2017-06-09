@@ -22,7 +22,8 @@ class ReReLU(layers.Layer):
         zeros=K.zeros_like(inputs)
         ones=K.ones_like(inputs)
         shape=K.shape(inputs)
-        relu=K.max(self._bound_cat(zeros,inputs),axis=0)
+        relu_inputs=self.slope*(inputs-(self.x_intercept*ones))
+        relu=K.max(self._bound_cat(zeros,relu_inputs),axis=0)
         rerelu=K.min(self._bound_cat(ones,relu,shape),axis=0)
         return rerelu
 
