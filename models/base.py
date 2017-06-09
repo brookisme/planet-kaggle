@@ -7,6 +7,7 @@ from keras.layers import Dense, Dropout, BatchNormalization, Flatten, Lambda
 from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
+from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 import utils
 from callbacks.lossaccf2 import LossAccF2History
 from helpers.dfgen import DFGen
@@ -20,6 +21,8 @@ DATA_ROOT=os.environ.get('DATA')
 WEIGHT_ROOT=os.environ.get('WEIGHTS')
 DATA_DIR=f'{DATA_ROOT}/{PROJECT_NAME}'
 WEIGHT_DIR=f'{WEIGHT_ROOT}/{PROJECT_NAME}'
+OUTPUT_DIR='out'
+HISTORY_DIR=f'{OUTPUT_DIR}/history'
 BANDS=4
 BATCH_INPUT_SHAPE=(None,256,256,BANDS)
 TARGET_DIM=17
@@ -28,6 +31,8 @@ DEFAULT_DR=0.5
 DEFAULT_LOSS_FUNC='binary_crossentropy'
 DEFAULT_METRICS=['accuracy']
 DEFAULT_HISTORY=LossAccF2History
+LR_REDUCER=ReduceLROnPlateau(monitor='val_loss', factor=0.75, patience=5,cooldown=1, min_lr=0.0001)    
+
 
 
 
@@ -125,14 +130,22 @@ class MODEL_BASE(object):
             batch_size=32,
             ndvi_images=False,
             history=DEFAULT_HISTORY,
-            history_path=None,
+            history_name=None,
+            checkpoint_name=None,
+            reduce_lr=True,
             callbacks=[]):
         """ call fit_generator 
             Args:
                 -   if pdata (instance of <data.planent:PlanetData>) 
                     use params from pdata
                 -   otherwise used passed params
-                -   history_path: <str> path to save pickle of history.
+                -   history_name:
+                        saves two files:
+                            - {history_name}.train.p
+                            - {history_name}.valid.p
+                -   checkput_name:
+                        saves weights after each epoch. file path is
+                        {WEIGHT_DIR}/{checkpoint_name}.{epoch}-{loss}.hdf5
         """
         if pdata:
             if not train_sz: train_sz=pdata.train_size
@@ -143,9 +156,17 @@ class MODEL_BASE(object):
                 dataframe=pdata.valid_df,batch_size=batch_size,ndvi_images=ndvi_images)
 
         if history:
-            self.history=history(save_path=history_path)
+            path=f'{HISTORY_DIR}/{history_name}'
+            self.history=history(save_path=path)
             callbacks.append(self.history)
 
+        if checkpoint_name:
+            path=f'{WEIGHT_DIR}/{checkpoint_name}.{{epoch:02d}}-{{val_loss:.2f}}.hdf5'
+            callbacks.append(ModelCheckpoint(path,save_weights_only=True))
+
+        if reduce_lr:
+            callbacks.append(LR_REDUCER)
+            
         nb_epochs,steps,validation_steps=utils.gen_params(
             train_sz,valid_sz,epochs,sample_pct,sample_sizes)
         return self.model().fit_generator(
@@ -164,6 +185,7 @@ class MODEL_BASE(object):
         fpath=f'{fpath}/{name}'
         if file_ext: fpath=f'{fpath}.{file_ext}'
         return fpath
+
 
     def _weight_path(self,pdata):
         tag_weight_path=f'{WEIGHT_DIR}/tags_{pdata._tags_to_string()}'
