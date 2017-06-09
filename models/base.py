@@ -7,6 +7,7 @@ from keras.layers import Dense, Dropout, BatchNormalization, Flatten, Lambda
 from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
+from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 import utils
 from callbacks.lossaccf2 import LossAccF2History
 from helpers.dfgen import DFGen
@@ -28,6 +29,8 @@ DEFAULT_DR=0.5
 DEFAULT_LOSS_FUNC='binary_crossentropy'
 DEFAULT_METRICS=['accuracy']
 DEFAULT_HISTORY=LossAccF2History
+LR_REDUCER=ReduceLROnPlateau(monitor='val_loss', factor=0.75, patience=5,cooldown=1, min_lr=0.0001)    
+
 
 
 
@@ -126,6 +129,8 @@ class MODEL_BASE(object):
             ndvi_images=False,
             history=DEFAULT_HISTORY,
             history_path=None,
+            checkpoint_path=None,
+            reduce_lr: True
             callbacks=[]):
         """ call fit_generator 
             Args:
@@ -146,6 +151,12 @@ class MODEL_BASE(object):
             self.history=history(save_path=history_path)
             callbacks.append(self.history)
 
+        if checkpoint_path:
+            callbacks.append(ModelCheckpoint(checkpoint_path,save_weights_only=True))
+
+        if reduce_lr:
+            callbacks.append(LR_REDUCER)
+            
         nb_epochs,steps,validation_steps=utils.gen_params(
             train_sz,valid_sz,epochs,sample_pct,sample_sizes)
         return self.model().fit_generator(
