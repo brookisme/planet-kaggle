@@ -1,25 +1,6 @@
 import pickle
+from callbacks.measures import HistoryMeasures
 from keras.callbacks import Callback
-
-###################################################################
-#
-# TrainHistory <keras callback>: 
-#
-#    Capture loss, accuracy, f2 score during training
-#
-####################################################################
-
-class LossAccF2Measures(object):
-    def __init__(self):
-        self.loss = []
-        self.f2_score = []
-        self.accuracy = []
-
-    def dict(self):
-        return {
-            'loss': self.loss,
-            'f2_score': self.f2_score,
-            'accuracy': self.accuracy}
 
 
 
@@ -50,25 +31,23 @@ class LossAccF2History(Callback):
     def on_train_begin(self, logs={}):
         """ init measures for training/validation
         """
-        self.train=LossAccF2Measures()
-        self.valid=LossAccF2Measures()
+        self.batch=HistoryMeasures(
+            ['loss','k_f2','acc'])
+        self.epoch=HistoryMeasures(
+            ['loss','k_f2','acc','val_loss','val_k_f2','val_acc'])
 
 
     def on_batch_end(self, batch, logs={}):
         """ capture training measures
         """
-        self.train.loss.append(logs.get('loss'))
-        self.train.f2_score.append(logs.get('k_f2'))
-        self.train.accuracy.append(logs.get('acc'))
+        self.batch.update(logs)
  
 
     def on_epoch_end(self, epoch, logs={}):
         """ capture validation measures
             - save to self.save_path if exists
         """
-        self.valid.loss.append(logs.get('val_loss'))
-        self.valid.f2_score.append(logs.get('val_k_f2'))
-        self.valid.accuracy.append(logs.get('val_acc'))        
+        self.epoch.update(logs)      
         if self.save_path: self._save()
 
 
@@ -78,8 +57,8 @@ class LossAccF2History(Callback):
     def _save(self):
         """ save train/valid dictionaries
         """
-        self._save_obj(f'{self.save_path}.train.p',self.train.dict())
-        self._save_obj(f'{self.save_path}.valid.p',self.valid.dict())
+        self._save_obj(f'{self.save_path}.batch.p',self.batch.dict())
+        self._save_obj(f'{self.save_path}.epoch.p',self.epoch.dict())
 
 
     def _save_obj(self,path,obj):
