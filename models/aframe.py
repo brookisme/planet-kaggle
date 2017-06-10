@@ -6,7 +6,8 @@ from keras.layers.core import Lambda
 from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
-from keras.layers import Input, Dense, Merge
+from keras.layers import Input, Dense
+from keras.layers.merge import Concatenate
 from keras.models import Model
 import numpy as np
 from models.base import MODEL_BASE
@@ -96,9 +97,12 @@ class Flex(AF_BASE):
 
 
 class Combo(AF_BASE):
-    # --> 122                 premodels.append(Model(inputs=inputs, outputs=model))
-    # TypeError: Output tensors to a Model must be Keras tensors. 
-    #             Found: <keras.engine.training.Model object at 0x7fe20d013f28>
+    """ Model from Models:
+        - takes list of input models and sets all layers to have trainable=False
+        - concatenates models
+        - (optional) adds FC blocks
+        - adds final output layer
+    """
     def __init__(self,
             input_models,
             lmbda=None,
@@ -119,10 +123,15 @@ class Combo(AF_BASE):
     def model(self):
         if not self._model:
             inputs=Input(batch_shape=self.batch_input_shape)
-            x=Merge(self.input_models)(inputs)
+            premodels=[]
+            for premodel in self.input_models:
+                premodels.append(premodel(inputs))
+            x=Concatenate()(premodels)
             for output_dim in self.fc_layers:
                 x=self._fc_block(x,output_dim=output_dim)
             outputs=Dense(self.target_dim, activation=self.output_activation)(x)
+            x=Model(inputs=inputs,outputs=outputs)
+
             self._model=Model(inputs=inputs,outputs=outputs)
             if self.auto_compile: self.compile()
         return self._model
