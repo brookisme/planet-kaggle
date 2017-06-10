@@ -67,12 +67,12 @@ class MODEL_BASE(object):
 
     def load_weights(self,pdata):
         # We may want to allow this to pass the version number
-        self.model().load_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata._tags_to_string()}_v{pdata.version}.hdf5')
+        self.model().load_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata.tags_to_string()}_v{pdata.version}.hdf5')
 
 
     def save_weights(self,pdata):
         # We may want to allow this to pass the version number
-        self.model().save_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata._tags_to_string()}_v{pdata.version}.hdf5')
+        self.model().save_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata.tags_to_string()}_v{pdata.version}.hdf5')
 
 
     def model(self):
@@ -126,7 +126,6 @@ class MODEL_BASE(object):
             train_gen=None,
             valid_gen=None,
             sample_pct=1.0,
-            sample_sizes=None,
             batch_size=32,
             ndvi_images=False,
             history=DEFAULT_HISTORY,
@@ -188,7 +187,7 @@ class MODEL_BASE(object):
 
 
     def _weight_path(self,pdata):
-        tag_weight_path=f'{WEIGHT_DIR}/tags_{pdata._tags_to_string()}'
+        tag_weight_path=f'{WEIGHT_DIR}/tags_{pdata.tags_to_string()}'
         if not os.path.isdir(tag_weight_path):
             os.mkdir(tag_weight_path)
         return tag_weight_path
