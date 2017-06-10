@@ -167,8 +167,8 @@ class MODEL_BASE(object):
         if reduce_lr:
             callbacks.append(LR_REDUCER)
             
-        nb_epochs,steps,validation_steps=utils.gen_params(
-            train_sz,valid_sz,epochs,sample_pct,sample_sizes)
+        steps,validation_steps=utils.gen_params(
+            train_sz,valid_sz,epochs,sample_pct)
         return self.model().fit_generator(
             generator=train_gen, 
             validation_data=valid_gen,
