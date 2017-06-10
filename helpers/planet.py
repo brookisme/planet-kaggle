@@ -91,7 +91,7 @@ class PlanetData(object):
             name=f'training_data_v{self.version}.csv'
         else:
             # add binary tag-string to name if using a subset of TAGS
-            name=f'training_data_{self.train_size}_v{self.version}_{self._tags_to_string()}.csv'
+            name=f'training_data_{self.train_size}_v{self.version}_{self.tags_to_string()}.csv'
         return f'{ROOT}/{name}'
 
     
@@ -101,7 +101,7 @@ class PlanetData(object):
         if self.is_full:
             name=f'validation_data_v{self.version}.csv'
         else:
-            name=f'validation_data_{self.valid_size}_v{self.version}_{self._tags_to_string()}.csv'
+            name=f'validation_data_{self.valid_size}_v{self.version}_{self.tags_to_string()}.csv'
         return f'{ROOT}/{name}'
 
 
@@ -120,9 +120,16 @@ class PlanetData(object):
         """              
         self.train_df.to_csv(self.train_path(),index=False,sep=' ')
         self.valid_df.to_csv(self.valid_path(),index=False,sep=' ')
+    
 
-
-
+    def tags_to_string(self):
+        """"converts a list of tags to a string of 0's and 1's 
+        to use in the csv file name"""
+        if self.tags==TAGS:
+            tag_str='ALL'
+        else:
+            tag_str=''.join(str(int(TAG in self.tags)) for TAG in TAGS)
+        return tag_str
 
     #
     # INTERNAL
@@ -200,15 +207,6 @@ class PlanetData(object):
         else:
             return str_or_list
             
-    def _tags_to_string(self):
-        """"converts a list of tags to a string of 0's and 1's 
-        to use in the csv file name"""
-        if self.tags==TAGS:
-            tag_str='ALL'
-        else:
-            tag_str=''.join(str(int(TAG in self.tags)) for TAG in TAGS)
-        return tag_str
-        
 
 
 
