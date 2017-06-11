@@ -7,6 +7,7 @@ from keras.optimizers import SGD,Adam
 from keras.layers.convolutional import ZeroPadding2D, Conv2D
 from keras.layers.pooling import MaxPooling2D
 from keras.layers import Input, Dense
+from keras.layers.merge import Concatenate
 from keras.models import Model
 import numpy as np
 from models.base import MODEL_BASE
@@ -32,7 +33,29 @@ DEFAULT_FC_LAYERS=[
 #
 # FLEX MODEL
 #
-class Flex(MODEL_BASE):
+class AF_BASE(MODEL_BASE):
+    #
+    # INTERNAL: BLOCKS
+    #
+    def _conv_block(self,x,filters,layers=[3],pool_size=(2,2)):
+        for size in layers:
+            x=ZeroPadding2D((1, 1))(x)
+            x=Conv2D(filters, (size,size), activation=self.conv_activation)(x)
+        if self.batch_norm: x=BatchNormalization()(x)
+        x=MaxPooling2D(pool_size=pool_size)(x)
+        return x
+
+
+    def _fc_block(self,x,output_dim=256,dr=0.5):
+        x=Dense(output_dim, activation=self.fc_activation)(x)
+        if self.batch_norm: x=BatchNormalization()(x)
+        x=Dropout(dr)(x)
+        return x
+
+
+
+class Flex(AF_BASE):
+
     def __init__(self,
             lmbda=None,
             batch_norm=False,
@@ -72,20 +95,53 @@ class Flex(MODEL_BASE):
 
 
 
-    #
-    # INTERNAL: BLOCKS
-    #
-    def _conv_block(self,x,filters,layers=[3],pool_size=(2,2)):
-        for size in layers:
-            x=ZeroPadding2D((1, 1))(x)
-            x=Conv2D(filters, (size,size), activation=self.conv_activation)(x)
-        if self.batch_norm: x=BatchNormalization()(x)
-        x=MaxPooling2D(pool_size=pool_size)(x)
-        return x
+
+class Combo(AF_BASE):
+    """ Model from Models:
+        - takes list of input models and sets all layers to have trainable=False
+        - concatenates models
+        - (optional) adds FC blocks
+        - adds final output layer
+    """
+    def __init__(self,
+            input_models,
+            lmbda=None,
+            batch_norm=False,
+            fc_layers=DEFAULT_FC_LAYERS,
+            fc_activation=DEFAULT_FC_ACTIVATION,
+            output_activation=DEFAULT_OUTPUT_ACTIVATION,
+            **kwargs):
+        self.input_models=self._process_models(input_models)
+        self.lmbda=lmbda
+        self.batch_norm=batch_norm
+        self.fc_layers=fc_layers
+        self.fc_activation=fc_activation
+        self.output_activation=output_activation
+        super().__init__(**kwargs)
 
 
-    def _fc_block(self,x,output_dim=256,dr=0.5):
-        x=Dense(output_dim, activation=self.fc_activation)(x)
-        if self.batch_norm: x=BatchNormalization()(x)
-        x=Dropout(dr)(x)
-        return x
+    def model(self):
+        if not self._model:
+            inputs=Input(batch_shape=self.batch_input_shape)
+            premodels=[]
+            for premodel in self.input_models:
+                premodels.append(premodel(inputs))
+            x=Concatenate()(premodels)
+            for output_dim in self.fc_layers:
+                x=self._fc_block(x,output_dim=output_dim)
+            outputs=Dense(self.target_dim, activation=self.output_activation)(x)
+            x=Model(inputs=inputs,outputs=outputs)
+
+            self._model=Model(inputs=inputs,outputs=outputs)
+            if self.auto_compile: self.compile()
+        return self._model
+
+
+    def _process_models(self,models):
+        self.input_size=0
+        for model in models:
+            for layer in model.layers:
+                layer.trainable=False
+            self.input_size=self.input_size+model.output_shape[-1]
+        return models
+
