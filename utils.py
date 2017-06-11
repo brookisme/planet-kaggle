@@ -4,7 +4,7 @@ from keras import backend as K
 from sklearn.metrics import fbeta_score
 
 
-def gen_params(train_size=None,valid_size=None,epochs=5,sample_pct=1.0,sample_sizes=None):
+def gen_params(train_size=None,valid_size=None,epochs=5,sample_pct=1.0):
     """ Generator Params
         returns data for fit generator
         Args:
@@ -14,16 +14,12 @@ def gen_params(train_size=None,valid_size=None,epochs=5,sample_pct=1.0,sample_si
         return:
             epochs,steps_per_epoch, validation_steps
     """
-    if sample_sizes:
-        train_size=sample_sizes[0]
-        valid_size=sample_sizes[1]
-    else:
-        train_size=sample_pct*train_size
-        valid_size=sample_pct*valid_size
+    train_size=sample_pct*train_size
+    valid_size=sample_pct*valid_size
 
     s=math.floor(train_size/epochs)
     vs=math.floor(valid_size/epochs)
-    return epochs,s,vs
+    return s,vs
 
 
 def cos_distance(a,b,return_type=None):
