@@ -102,10 +102,25 @@ class Combo(AF_BASE):
         - concatenates models
         - (optional) adds FC blocks
         - adds final output layer
+        Usage:
+            Assume you have 2 trained keras models m1, m2.
+                For instance:
+                    # model 1
+                    flx1=Flex(...)
+                    flx1.fit_gen(..)
+                    m1=flx1.model()
+                    # model 2
+                    flx2=...
+            # combo-model
+            swell=Combo(input_models=[m1,m2])
+            swell.fit_gen(..)
+        Args:
+            input_models: list of trained models
+            batch_norm: True/False - perform batch_norm after blocks
+            fc_layers: list of fc_layers between input_models concat and final layer
     """
     def __init__(self,
             input_models,
-            lmbda=None,
             batch_norm=False,
             fc_layers=DEFAULT_FC_LAYERS,
             fc_activation=DEFAULT_FC_ACTIVATION,
