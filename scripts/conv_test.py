@@ -2,6 +2,7 @@ import os,sys
 sys.path.append(os.environ.get('PKR'))
 import argparse
 import math
+import re
 import numpy as np
 from skimage import io
 from keras import backend as K
@@ -32,6 +33,7 @@ DEFAULT_TRAIN_SIZE=2000
 DEFAULT_BATCH_SIZE=64
 DEFAULT_EPOCH_PCT=6 
 """ TEST CONFIG """
+TEST_PD_SIZE=300
 TEST_TRAIN_SIZE=128
 TEST_VALID_SIZE=64
 TEST_BATCH_SIZE=32
@@ -53,6 +55,7 @@ def run(
         weights,
         test_run):
     ident=_ident(conv_layers)
+    print('conv_layers:',conv_layers)
     model_obj=MODEL(
         batch_norm=batch_norm,
         conv_layers=conv_layers,
@@ -64,6 +67,7 @@ def run(
     else:
         names=f'cl-{ident}'
         # pre-run
+        print('conv_test: prerun')
         model_obj.compile(optimizer=Adam(lr=PRERUN_LR))
         model_obj.fit_gen(        
                 pdata=data,
@@ -74,6 +78,7 @@ def run(
                 history_name=f'pre-{names}',
                 checkpoint_name=f'pre-{names}')
     # full_run
+    print('conv_test: run')
     model_obj.compile(optimizer=Adam(lr=INITIAL_LR))
     model_obj.fit_gen(        
             epochs=epochs,
@@ -99,25 +104,26 @@ def truthy(value):
     """ Stringy Truthyness
     """
     value=str(value).lower().strip(' ')
-    return value in ['none','false','0','nope','','[]']
+    return value not in ['none','false','0','nope','','[]']
 
 
 #
 # MAIN
 #
 def _run(args):
-    conv_layers=eval(conv_layers)
+    conv_layers=eval(args.conv_layers)
     batch_norm=truthy(args.batch_norm)
     test_run=truthy(args.test)
+    print('test_run',test_run)
     if test_run:
         tsize=TEST_TRAIN_SIZE
         vsize=TEST_VALID_SIZE
         bsize=TEST_BATCH_SIZE
         epochs=TEST_EPOCHS
-        data=PlanetData(train_size=TEST_TRAIN_SIZE)
+        data=PlanetData(train_size=TEST_PD_SIZE)
     else:
-        tsize=int(args.train_size)
-        vsize=math.floor(train_size*VALID_PCT)
+        tsize=int(args.size)
+        vsize=math.floor(tsize*VALID_PCT)
         bsize=int(args.batch_size)
         epochs_pct=float(args.epochs_pct)
         epochs=math.floor(epochs_pct*tsize/bsize)
@@ -142,7 +148,7 @@ def main():
         'run',
         help='run aflex based on non default conv_layers')
     parser_run.add_argument(
-        'conv_layers',help='conv_layers. example: [(32,[3]),(64,[3]),(16,[3])]')
+        'conv_layers',help='conv_layers string (with quotes). example: \'[(32,[3]),(64,[3]),(16,[3])]\'')
     parser_run.add_argument(
         '-s','--size',
         default=DEFAULT_TRAIN_SIZE,
