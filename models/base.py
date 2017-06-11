@@ -31,7 +31,7 @@ DEFAULT_DR=0.5
 DEFAULT_LOSS_FUNC='binary_crossentropy'
 DEFAULT_METRICS=['accuracy']
 DEFAULT_HISTORY=LossAccF2History
-LR_REDUCER=ReduceLROnPlateau(monitor='val_loss', factor=0.75, patience=5,cooldown=1, min_lr=0.0001)    
+LR_REDUCER=ReduceLROnPlateau()    
 
 
 
