@@ -131,6 +131,7 @@ class MODEL_BASE(object):
             history=DEFAULT_HISTORY,
             history_name=None,
             checkpoint_name=None,
+            save_all_checkpoints=False,
             reduce_lr=True,
             callbacks=[]):
         """ call fit_generator 
@@ -160,7 +161,11 @@ class MODEL_BASE(object):
             callbacks.append(self.history)
 
         if checkpoint_name:
-            path=f'{WEIGHT_DIR}/{checkpoint_name}.{{epoch:02d}}-{{val_loss:.2f}}.hdf5'
+            if save_all_checkpoints:
+                path=f'{WEIGHT_DIR}/{checkpoint_name}.{{epoch:02d}}-{{val_loss:.2f}}.hdf5'
+            else:
+                path=f'{WEIGHT_DIR}/{checkpoint_name}.hdf5'
+            os.makedirs(os.path.dirname(path),exist_ok=True)
             callbacks.append(ModelCheckpoint(path,save_weights_only=True))
 
         if reduce_lr:
