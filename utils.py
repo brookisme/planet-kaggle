@@ -106,10 +106,16 @@ def k_f2_loss(y_true, y_pred):
 ##################################################
 
 
-def plot_dict(dictionary,title=None):
+def plot_dict(dictionary,title=None,xllim=None):
+    plt.figure()
     if title: plt.title(title)
     keys=dictionary.keys()
     for key in keys:
         plt.plot(dictionary[key])
     plt.legend(keys)
+    if xllim:
+        print('xllim',xllim)
+        plt.axes().set_xlim(left=xllim)
+
+
 
