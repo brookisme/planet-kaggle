@@ -61,8 +61,8 @@ class MODEL_BASE(object):
         self.target_dim=target_dim
         self.metrics=metrics
         self.auto_compile=auto_compile
-        self._model=None
         self.history=None
+        self._model=None
 
 
     def load_weights(self,pdata):
@@ -169,7 +169,7 @@ class MODEL_BASE(object):
         steps,validation_steps=utils.gen_params(
             train_sz,valid_sz,epochs,sample_pct)
         return self.model().fit_generator(
-            generator=train_gen, 
+            generator=train_gen,
             validation_data=valid_gen,
             steps_per_epoch=steps,
             validation_steps=validation_steps,

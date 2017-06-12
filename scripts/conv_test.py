@@ -29,9 +29,8 @@ PRERUN_BATCH_SIZE=64
 PRERUN_EPOCHS=1
 """ DEFAULT_CONFIG """
 DEFUALT_TEST_MODE=False
-DEFAULT_TRAIN_SIZE=2000
 DEFAULT_BATCH_SIZE=64
-DEFAULT_EPOCH_PCT=6 
+DEFAULT_EPOCHS=50
 """ TEST CONFIG """
 TEST_PD_SIZE=300
 TEST_TRAIN_SIZE=128
@@ -47,9 +46,9 @@ TEST_EPOCHS=2
 def run(
         data,
         conv_layers,
+        batch_size,
         train_size,
         valid_size,
-        batch_size,
         batch_norm,
         epochs,
         weights,
@@ -69,7 +68,7 @@ def run(
         # pre-run
         print('conv_test: prerun')
         model_obj.compile(optimizer=Adam(lr=PRERUN_LR))
-        model_obj.fit_gen(        
+        model_obj.fit_gen(
                 pdata=data,
                 epochs=PRERUN_EPOCHS,
                 train_sz=PRERUN_TRAIN_SIZE,
@@ -80,9 +79,9 @@ def run(
     # full_run
     print('conv_test: run')
     model_obj.compile(optimizer=Adam(lr=INITIAL_LR))
-    model_obj.fit_gen(        
-            epochs=epochs,
+    model_obj.fit_gen(
             pdata=data,
+            epochs=epochs,
             train_sz=train_size,
             valid_sz=valid_size,
             batch_size=batch_size,
@@ -115,29 +114,40 @@ def _run(args):
     batch_norm=truthy(args.batch_norm)
     test_run=truthy(args.test)
     create=truthy(args.create)
-    print('test_run',test_run)
     if test_run:
+        print('conv_test:TEST_RUN')
         tsize=TEST_TRAIN_SIZE
         vsize=TEST_VALID_SIZE
         bsize=TEST_BATCH_SIZE
         epochs=TEST_EPOCHS
         data=PlanetData(create=create,train_size=TEST_PD_SIZE)
     else:
-        tsize=int(args.size)
-        vsize=math.floor(tsize*VALID_PCT)
         bsize=int(args.batch_size)
-        epochs_pct=float(args.epochs_pct)
-        epochs=math.floor(epochs_pct*tsize/bsize)
+        epochs=int(args.epochs)
         data=PlanetData(create=create,train_size='FULL')
-    run(data=data,
-        conv_layers=conv_layers,
-        train_size=tsize,
-        valid_size=vsize,
-        batch_size=bsize,
-        epochs=epochs,
-        batch_norm=batch_norm,
-        weights=args.weights,
-        test_run=test_run)
+        train_size=bsize*epochs
+        valid_size=math.floor(train_size*VALID_PCT)
+    if truthy(args.dry):
+        print('\nconv_test:DRY_RUN')
+        print('\tconv_layers:',conv_layers)
+        print('\tepochs:',epochs)
+        print('\tbatch_size:',bsize)
+        print('\tbatch_norm:',batch_norm)
+        print('\tweights:',args.weights)
+        print('\ttest_run:',test_run)
+        print('\t=>train_size:',train_size)
+        print('\t=>valid_size:',valid_size)
+        print('')
+    else:
+        run(data=data,
+            conv_layers=conv_layers,
+            batch_size=bsize,
+            epochs=epochs,
+            train_size=train_size,
+            valid_size=valid_size,
+            batch_norm=batch_norm,
+            weights=args.weights,
+            test_run=test_run)
 
 
 
@@ -151,17 +161,13 @@ def main():
     parser_run.add_argument(
         'conv_layers',help='conv_layers string (with quotes). example: \'[(32,[3]),(64,[3]),(16,[3])]\'')
     parser_run.add_argument(
-        '-s','--size',
-        default=DEFAULT_TRAIN_SIZE,
-        help=f'amount of training data to use. valid_size=floor(size*{VALID_PCT})')
-    parser_run.add_argument(
         '-b','--batch_size',
         default=DEFAULT_BATCH_SIZE,
         help=f'batch_size. default {DEFAULT_BATCH_SIZE})')
     parser_run.add_argument(
-        '-p','--epochs_pct',
-        default=DEFAULT_EPOCH_PCT,
-        help=f'number of epochs = floor(epochs_pct * TRAIN_SIZE / BATCH SIZE). default {DEFAULT_EPOCH_PCT}')
+        '-e','--epochs',
+        default=DEFAULT_EPOCHS,
+        help=f'number of epochs. default {DEFAULT_EPOCHS}')
     parser_run.add_argument(
         '-w','--weights',
         default=None,
@@ -178,6 +184,10 @@ def main():
         '-t','--test',
         default=DEFUALT_TEST_MODE,
         help=f'is test run: True | False. default {DEFUALT_TEST_MODE}')
+    parser_run.add_argument(
+        '-d','--dry',
+        default=False,
+        help=f'is dry run (only print params): True | False. default {DEFUALT_TEST_MODE}')
     parser_run.set_defaults(func=_run)
     """ init """
     args=parser.parse_args()
