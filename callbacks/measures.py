@@ -24,7 +24,7 @@ class HistoryMeasures(object):
         for prop in self.properties:
             value=logs.pop(prop,None)
             if value:
-                setattr(self,prop,value)
+                getattr(self, prop).append(value)
 
 
     def dict(self):
