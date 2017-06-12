@@ -2,6 +2,7 @@ import math
 import numpy as np
 from keras import backend as K
 from sklearn.metrics import fbeta_score
+import matplotlib.pyplot as plt
 
 
 def gen_params(train_size=None,valid_size=None,epochs=5,sample_pct=1.0):
@@ -98,4 +99,17 @@ def k_f2_loss(y_true, y_pred):
 
 
 
+##################################################
+#
+# NOTEBOOK HELPERS
+#
+##################################################
+
+
+def plot_dict(dictionary,title=None):
+    if title: plt.title(title)
+    keys=dictionary.keys()
+    for key in keys:
+        plt.plot(dictionary[key])
+    plt.legend(keys)
 
