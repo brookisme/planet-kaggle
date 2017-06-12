@@ -3,3 +3,5 @@
 notebooks/StepFunction-Layer.ipynb | nbpy/StepFunction-Layer.nbpy.py
 notebooks/NDVI.ipynb | nbpy/NDVI.nbpy.py
 notebooks/ModelExplorer.ipynb | nbpy/ModelExplorer.nbpy.py
+
+notebooks/ConvTestsHistory.ipynb | nbpy/ConvTestsHistory.nbpy.py
