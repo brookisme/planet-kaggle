@@ -157,6 +157,7 @@ class MODEL_BASE(object):
 
         if history:
             path=f'{HISTORY_DIR}/{history_name}'
+            os.makedirs(os.path.dirname(path),exist_ok=True)
             self.history=history(save_path=path)
             callbacks.append(self.history)
 
