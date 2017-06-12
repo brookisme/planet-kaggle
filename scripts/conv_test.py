@@ -114,20 +114,21 @@ def _run(args):
     conv_layers=eval(args.conv_layers)
     batch_norm=truthy(args.batch_norm)
     test_run=truthy(args.test)
+    create=truthy(args.create)
     print('test_run',test_run)
     if test_run:
         tsize=TEST_TRAIN_SIZE
         vsize=TEST_VALID_SIZE
         bsize=TEST_BATCH_SIZE
         epochs=TEST_EPOCHS
-        data=PlanetData(train_size=TEST_PD_SIZE)
+        data=PlanetData(create=create,train_size=TEST_PD_SIZE)
     else:
         tsize=int(args.size)
         vsize=math.floor(tsize*VALID_PCT)
         bsize=int(args.batch_size)
         epochs_pct=float(args.epochs_pct)
         epochs=math.floor(epochs_pct*tsize/bsize)
-        data=PlanetData(train_size='FULL')
+        data=PlanetData(create=create,train_size='FULL')
     run(data=data,
         conv_layers=conv_layers,
         train_size=tsize,
@@ -169,6 +170,10 @@ def main():
         '-n','--batch_norm',
         default=DEFAULT_BATCH_NORM,
         help=f'batch normalize after blocks: True | False. default {DEFAULT_BATCH_NORM}')
+    parser_run.add_argument(
+        '-c','--create',
+        default=False,
+        help=f'create new dataset: True | False. default False')
     parser_run.add_argument(
         '-t','--test',
         default=DEFUALT_TEST_MODE,
