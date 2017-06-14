@@ -50,12 +50,14 @@ class MODEL_BASE(object):
 
     def __init__(self,
             batch_input_shape=BATCH_INPUT_SHAPE,
+            image_ext='tif',
             optimizer=DEFAULT_OPT,
             loss_func=DEFAULT_LOSS_FUNC,
             target_dim=TARGET_DIM,
             metrics=DEFAULT_METRICS,
             auto_compile=True):
         self.batch_input_shape=batch_input_shape
+        self.image_ext=image_ext
         self.optimizer=optimizer
         self.loss_func=loss_func
         self.target_dim=target_dim
@@ -151,9 +153,9 @@ class MODEL_BASE(object):
             if not train_sz: train_sz=pdata.train_size
             if not valid_sz: valid_sz=pdata.valid_size
             train_gen=DFGen(
-                dataframe=pdata.train_df,batch_size=batch_size,ndvi_images=ndvi_images)
+                dataframe=pdata.train_df,image_ext=self.image_ext,batch_size=batch_size,ndvi_images=ndvi_images)
             valid_gen=DFGen(
-                dataframe=pdata.valid_df,batch_size=batch_size,ndvi_images=ndvi_images)
+                dataframe=pdata.valid_df,image_ext=self.image_ext,batch_size=batch_size,ndvi_images=ndvi_images)
 
         if history:
             path=f'{HISTORY_DIR}/{history_name}'
