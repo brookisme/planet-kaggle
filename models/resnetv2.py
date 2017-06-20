@@ -53,7 +53,7 @@ class ResNet50_BASE(MODEL_BASE):
         x = Activation('relu')(x)
         
         return x
-
+##
 
     DEFAULT_CONV_KERNELS=[1,3,1,1]
     DEFAULT_CONV_STRIDES=[2,1,1,2]
