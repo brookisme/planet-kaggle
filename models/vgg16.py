@@ -19,9 +19,12 @@ DEFAULT_DR=0.5
 PROJECT_NAME='planet'
 WEIGHT_ROOT=os.environ.get('WEIGHTS')
 WEIGHT_DIR=f'{WEIGHT_ROOT}/{PROJECT_NAME}'
+<<<<<<< HEAD
 
 # VGG weights are downloaded from here
 # https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels.h5
+=======
+>>>>>>> file_exts
 VGG_WEIGHT_PATH=f'{WEIGHT_DIR}/VGG/vgg16.h5'
 VGG_MEAN = np.array([123.68, 116.779, 103.939], dtype=np.float32).reshape((1,1,3))
 
@@ -37,8 +40,13 @@ def ConvBlock(model,layers,filters):
 
 
 
+<<<<<<< HEAD
 def FCBlock(model,dr=DEFAULT_DR,output_dim=4096,activation='relu'):
     model.add(Dense(output_dim, activation=activation))
+=======
+def FCBlock(model,dr=DEFAULT_DR,output_dim=4096):
+    model.add(Dense(output_dim, activation='relu'))
+>>>>>>> file_exts
     model.add(Dropout(dr))
     return model
 
@@ -61,12 +69,18 @@ class VGG16(MODEL_BASE):
             self._model=ConvBlock(self._model,3,512)
             self._model=ConvBlock(self._model,3,512)
             self._model.add(Flatten())
+<<<<<<< HEAD
 
             self._model=FCBlock(self._model)
             self._model=FCBlock(self._model)
             self._model=FCBlock(self._model,dr=0,output_dim=1000,activation='softmax')
 
 #            self._model.add(Dense(1000, activation='softmax'))
+=======
+            self._model=FCBlock(self._model)
+            self._model=FCBlock(self._model)
+            self._model.add(Dense(1000, activation='softmax'))
+>>>>>>> file_exts
             self._model.load_weights(f'{VGG_WEIGHT_PATH}')
             self._model.compile(loss=self.loss_func, 
                 optimizer=self.optimizer,
@@ -86,15 +100,21 @@ class VGG16(MODEL_BASE):
 ####################################################################
 
 class VGG16_FT(MODEL_BASE):
+<<<<<<< HEAD
 
     # def __init__(self,vggtrain=False):
     #     self.vggtrain=vggtrain
 
+=======
+>>>>>>> file_exts
     def model(self):
         if not self._model:
             self._model=VGG16().model()
             self._model.layers.pop()
+<<<<<<< HEAD
             # if not self.vggtrain:
+=======
+>>>>>>> file_exts
             for layer in self._model.layers: layer.trainable=False
             self._model.add(Dense(self.target_dim, activation='softmax'))
             self._model.compile(loss=self.loss_func, 
