@@ -114,10 +114,10 @@ class ResNet50(ResNet50_BASE):
             inputs=Input(batch_shape=self.batch_input_shape)
             x=BatchNormalization()(inputs)
 
-            x = Conv2D(filters=64, kernel_size=(7, 7), strides=(2, 2))(x)
-            x = BatchNormalization()(x)
-            x = Activation('relu')(x)
-            x = MaxPooling2D(pool_size=(3, 3), strides=(2, 2))(x)
+            # x = Conv2D(filters=64, kernel_size=(7, 7), strides=(2, 2))(x)
+            # x = BatchNormalization()(x)
+            # x = Activation('relu')(x)
+            # x = MaxPooling2D(pool_size=(3, 3), strides=(2, 2))(x)
 
             x = self._conv_block(x, filters=[64, 64, 256, 256], strides=[1,1,1,1])
             x = self._identity_block(x, filters=[64, 64, 256])
