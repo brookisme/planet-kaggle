@@ -14,14 +14,16 @@ import numpy as np
 from models.base import MODEL_BASE
 
 
-DEFAULT_ID_KERNELS=[1,3,1]
-DEFAULT_ID_STRIDES=[1,1,1]
-DEFAULT_ID_PADDING=['valid','same','valid']
 
 class ResNet50_BASE(MODEL_BASE):
     #
     # INTERNAL: BLOCKS
     #
+
+    DEFAULT_ID_KERNELS=[1,3,1]
+    DEFAULT_ID_STRIDES=[1,1,1]
+    DEFAULT_ID_PADDING=['valid','same','valid']
+
     def _identity_block(self,
         input_tensor, 
         filters, 
@@ -53,9 +55,9 @@ class ResNet50_BASE(MODEL_BASE):
         return x
 
 
-DEFAULT_CONV_KERNELS=[1,3,1,1]
-DEFAULT_CONV_STRIDES=[2,1,1,2]
-DEFAULT_CONV_PADDING=['valid','same','valid','valid']
+    DEFAULT_CONV_KERNELS=[1,3,1,1]
+    DEFAULT_CONV_STRIDES=[2,1,1,2]
+    DEFAULT_CONV_PADDING=['valid','same','valid','valid']
 
     def _conv_block(self,
         input_tensor, 
