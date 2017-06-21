@@ -85,7 +85,7 @@ resnet_rare=resnet.ResNet50(loss_func='categorical_crossentropy',
 #resnet_weather.fit_gen(batch_size=32,epochs=200,pdata=pldALL_weather,history_name='pldALL_resnet_jpg_weather')
 #resnet_weather.fit_gen(batch_size=2,epochs=2,pdata=pld40_weather)
 
-resnet_rare.fit_gen(batch_size=32,epochs=200,pdata=pldALL_rare,history_name='pldALL_resnet_tif_rare')
+resnet_rare.fit_gen(batch_size=128,epochs=10,pdata=pldALL_rare,history_name='pldALL_resnet_tif_rare')
 #resnet_rare.fit_gen(batch_size=2,epochs=4,pdata=pld40_rare)
 
 
