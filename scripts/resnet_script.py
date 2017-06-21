@@ -58,19 +58,35 @@ TAGS=[
     'blow_down']
 
 WEATHER_LABELS=['clear','partly_cloudy','haze','cloudy'] 
+RARE_LABELS=['slash_burn', 'conventional_mine', 'artisinal_mine', 'blooming', 'selective_logging', 'blow_down']
 
 pld40_weather=helpers.PlanetData(train_size=40,tags=WEATHER_LABELS,create=True)
 pld200_weather=helpers.PlanetData(train_size=200,tags=WEATHER_LABELS,create=True)
 pld2000_weather=helpers.PlanetData(train_size=2000,tags=WEATHER_LABELS,create=True)
 pldALL_weather=helpers.PlanetData(train_size='ALL',tags=WEATHER_LABELS,create=True)
 
+pld40_rare=helpers.PlanetData(train_size=40,tags=RARE_LABELS,create=True)
+pld200_rare=helpers.PlanetData(train_size=200,tags=RARE_LABELS,create=True)
+pld2000_rare=helpers.PlanetData(train_size=2000,tags=RARE_LABELS,create=True)
+pldALL_rare=helpers.PlanetData(train_size='ALL',tags=RARE_LABELS,create=True)
+
+
+
 resnet_weather=resnet.ResNet50(loss_func='categorical_crossentropy',
                                target_dim=4,
                                metrics=['accuracy'],
                                output_activation='softmax',image_ext='jpg')
 
+resnet_rare=resnet.ResNet50(loss_func='categorical_crossentropy',
+                               target_dim=len(RARE_LABELS),
+                               metrics=['accuracy'],
+                               output_activation='softmax',image_ext='tif')
+
 #resnet_weather.fit_gen(batch_size=32,epochs=200,pdata=pldALL_weather,history_name='pldALL_resnet_jpg_weather')
-resnet_weather.fit_gen(batch_size=2,epochs=2,pdata=pld40_weather)
+#resnet_weather.fit_gen(batch_size=2,epochs=2,pdata=pld40_weather)
+
+resnet_rare.fit_gen(batch_size=32,epochs=200,pdata=pldALL_rare,history_name='pldALL_resnet_tif_rare')
+#resnet_rare.fit_gen(batch_size=2,epochs=4,pdata=pld40_rare)
 
 
 os.system("sudo poweroff")
