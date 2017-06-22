@@ -58,18 +58,40 @@ TAGS=[
     'blow_down']
 
 WEATHER_LABELS=['clear','partly_cloudy','haze','cloudy'] 
-RARE_LABELS=['slash_burn', 'conventional_mine', 'artisinal_mine', 'blooming', 'selective_logging', 'blow_down']
+RARE_LABELS=['selective_logging', 'artisinal_mine', 'blooming', 'slash_burn', 'conventional_mine', 'blow_down']
 
 pld40_weather=helpers.PlanetData(train_size=40,tags=WEATHER_LABELS,create=True)
 pld200_weather=helpers.PlanetData(train_size=200,tags=WEATHER_LABELS,create=True)
 pld2000_weather=helpers.PlanetData(train_size=2000,tags=WEATHER_LABELS,create=True)
 pldALL_weather=helpers.PlanetData(train_size='ALL',tags=WEATHER_LABELS,create=True)
 
-pld40_rare=helpers.PlanetData(train_size=40,tags=RARE_LABELS,create=True)
-pld200_rare=helpers.PlanetData(train_size=200,tags=RARE_LABELS,create=True)
-pld2000_rare=helpers.PlanetData(train_size=2000,tags=RARE_LABELS,create=True)
-pldALL_rare=helpers.PlanetData(train_size='ALL',tags=RARE_LABELS,create=True)
+def first_ele(ll):
+    gen=(i for i,e in enumerate(ll) if e==1)
+    idlist=[0]*len(ll)
+    idlist[next(gen)]=1
+    return idlist
 
+pld40_rare=helpers.PlanetData(train_size=40,tags=RARE_LABELS,create=True)
+pld40_rare.train_df['vec']=pld40_rare.train_df['vec'].apply(lambda x: first_ele(x))
+
+pld200_rare=helpers.PlanetData(train_size=200,tags=RARE_LABELS,create=True)
+pld200_rare.train_df['vec']=pld200_rare.train_df['vec'].apply(lambda x: first_ele(x))
+
+pld2000_rare=helpers.PlanetData(train_size=2000,tags=RARE_LABELS,create=True)
+pld2000_rare.train_df['vec']=pld2000_rare.train_df['vec'].apply(lambda x: first_ele(x))
+
+pldALL_rare=helpers.PlanetData(train_size='ALL',tags=RARE_LABELS,create=True)
+pldALL_rare.train_df['vec']=pldALL_rare.train_df['vec'].apply(lambda x: first_ele(x))
+
+# pld40_weather=helpers.PlanetData(train_size=40,tags=WEATHER_LABELS,create=False)
+# pld200_weather=helpers.PlanetData(train_size=200,tags=WEATHER_LABELS,create=False)
+# pld2000_weather=helpers.PlanetData(train_size=2000,tags=WEATHER_LABELS,create=False)
+# pldALL_weather=helpers.PlanetData(train_size='ALL',tags=WEATHER_LABELS,create=False)
+
+# pld40_rare=helpers.PlanetData(train_size=40,tags=RARE_LABELS,create=False)
+# pld200_rare=helpers.PlanetData(train_size=200,tags=RARE_LABELS,create=False)
+# pld2000_rare=helpers.PlanetData(train_size=2000,tags=RARE_LABELS,create=False)
+# pldALL_rare=helpers.PlanetData(train_size='ALL',tags=RARE_LABELS,create=False)
 
 
 resnet_weather=resnet.ResNet50(loss_func='categorical_crossentropy',
