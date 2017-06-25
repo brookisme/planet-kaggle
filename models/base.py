@@ -118,6 +118,29 @@ class MODEL_BASE(object):
         else:
             return pred
 
+    def predict_dir(self, 
+            image_dir, 
+            batch_size, 
+            data_root=DATA_DIR):
+        """ predicts all files in data_root/image_dir
+        """
+
+        abs_dir=f'{data_root}/{image_dir}'
+        image_names=os.listdir(abs_dir)
+        batch_gen=self._dir_batches(image_dir, batch_size, data_root=DATA_DIR)
+        predictions=[]
+        i=1
+        while (i-1)*batch_size < len(image_names):
+            image_name_batch=next(batch_gen)
+            # images= np.array([io.imread(image_name) for image_name in image_name_batch])
+            # pred_batch=self.model().predict(images)
+            pred__batch=[self.model().predict(np.expand_dims(io.imread(image_name),axis=0)) for image_name in image_name_batch]
+            predictions=predictions+pred__batch
+            i+=1
+        return predictions
+
+
+
 
     def fit_gen(self,
             epochs=None,
@@ -197,6 +220,18 @@ class MODEL_BASE(object):
         fpath=f'{fpath}/{name}'
         if file_ext: fpath=f'{fpath}.{file_ext}'
         return fpath
+
+
+    def _dir_batches(self, image_dir, batch_size, data_root=DATA_DIR):
+        """ Inputs: directpry and batch_size
+            Returns: generator yieling batches of image-pathnames
+        """
+        abs_dir=f'{data_root}/{image_dir}'
+        image_names=os.listdir(abs_dir)
+        image_names=[self._image_path(image_name, data_root=DATA_DIR, image_dir=image_dir) for image_name in image_names]
+        l = len(image_names)
+        for i in range(0, l, batch_size):
+            yield image_names[i:min(i + batch_size, l)]
 
 
     def _weight_path(self,pdata):
