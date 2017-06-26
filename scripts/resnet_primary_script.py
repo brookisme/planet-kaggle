@@ -80,7 +80,7 @@ resnet_primary=resnet.ResNet50(loss_func='categorical_crossentropy',
                                metrics=['accuracy'],
                                output_activation='softmax',image_ext='tif')
 
-resnet_primary.fit_gen(batch_size=32,epochs=100,steps_per_epoch=30,ndvi_images=True,pdata=pldALL_primary,history_name='pldALL_resnet_tif_primary')
+resnet_primary.fit_gen(batch_size=32,epochs=30,steps_per_epoch=100,ndvi_images=True,pdata=pldALL_primary,history_name='pldALL_resnet_tif_primary')
 #resnet_rare.fit_gen(batch_size=2,epochs=4,pdata=pld40_rare)
 
 
