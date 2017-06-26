@@ -67,7 +67,7 @@ class MODEL_BASE(object):
         self._model=None
 
     def load_weights(self,pdata):
-        # We may want to allow this to pass the version number
+        # We may want to allow this to pass the version number 
         self.model().load_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata.tags_to_string()}_v{pdata.version}.hdf5')
 
 
@@ -132,8 +132,6 @@ class MODEL_BASE(object):
         i=1
         while (i-1)*batch_size < len(image_names):
             image_name_batch=next(batch_gen)
-            # images= np.array([io.imread(image_name) for image_name in image_name_batch])
-            # pred_batch=self.model().predict(images)
             pred__batch=[self.model().predict(np.expand_dims(io.imread(image_name),axis=0)) for image_name in image_name_batch]
             predictions=predictions+pred__batch
             i+=1
@@ -149,7 +147,7 @@ class MODEL_BASE(object):
             valid_sz=None,
             train_gen=None,
             valid_gen=None,
-            sample_pct=1.0,
+            steps_per_epoch=10,
             batch_size=32,
             ndvi_images=False,
             history=DEFAULT_HISTORY,
@@ -170,6 +168,7 @@ class MODEL_BASE(object):
                 -   checkput_name:
                         saves weights after each epoch. file path is
                         {WEIGHT_DIR}/{checkpoint_name}.{epoch}-{loss}.hdf5
+                -   number of images trained is epochs * batch_size * steps_per_epoch
         """
         if pdata:
             if not train_sz: train_sz=pdata.train_size
@@ -196,12 +195,12 @@ class MODEL_BASE(object):
         if reduce_lr:
             callbacks.append(LR_REDUCER)
             
-        steps,validation_steps=utils.gen_params(
-            train_sz,valid_sz,epochs,sample_pct)
+        validation_steps=valid_sz/batch_size
+
         return self.model().fit_generator(
             generator=train_gen,
             validation_data=valid_gen,
-            steps_per_epoch=steps,
+            steps_per_epoch=steps_per_epoch,
             validation_steps=validation_steps,
             epochs=epochs,
             callbacks=callbacks,
