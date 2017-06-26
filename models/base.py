@@ -132,10 +132,10 @@ class MODEL_BASE(object):
         i=1
         while (i-1)*batch_size < len(image_names):
             image_name_batch=next(batch_gen)
-            pred__batch=[self.model().predict(np.expand_dims(io.imread(image_name),axis=0)) for image_name in image_name_batch]
-            predictions=predictions+pred__batch
+            pred_batch=[self.model().predict(np.expand_dims(io.imread(image_name),axis=0)) for image_name in image_name_batch]
+            predictions=predictions+pred_batch
             i+=1
-        return predictions
+        return dict(zip(image_names,predictions))
 
 
 
