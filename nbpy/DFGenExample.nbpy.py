@@ -96,3 +96,23 @@ gen.dataframe.head(10)
 """"""
 
 
+"""[markdown]
+---
+### LOAD FROM CONFIG
+"""
+
+
+"""[code]"""
+gen2=dfg.DFGen(
+    csv_file=f'{DATA_ROOT}/train.csv',
+    image_ext='tif',
+    lambda_func=False,
+    csv_sep=',')
+""""""
+
+
+"""[code]"""
+gen.dataframe.head(10)
+""""""
+
+
