@@ -18,6 +18,7 @@ include
 
 # Codebase
 playground.py
+update.sh
 
 # PYPI
 dist/
