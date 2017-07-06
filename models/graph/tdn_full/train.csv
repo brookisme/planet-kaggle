@@ -1,0 +1,301 @@
+image_name,tags,labels,paths
+train_16545,agriculture clear primary road water,"[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_16545.tif
+train_5406,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_5406.tif
+train_665,agriculture clear cultivation primary road water,"[1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_665.tif
+train_39085,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39085.tif
+train_27437,blow_down clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]",images/tif/train_27437.tif
+train_17137,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_17137.tif
+train_33563,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_33563.tif
+train_32690,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32690.tif
+train_11236,agriculture cultivation haze primary,"[1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11236.tif
+train_2673,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2673.tif
+train_14154,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14154.tif
+train_17106,clear habitation primary road,"[1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_17106.tif
+train_22146,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22146.tif
+train_39051,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39051.tif
+train_31790,clear primary road selective_logging,"[1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]",images/tif/train_31790.tif
+train_19414,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19414.tif
+train_263,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_263.tif
+train_37615,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37615.tif
+train_19751,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19751.tif
+train_35459,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35459.tif
+train_7605,clear cultivation habitation primary,"[1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7605.tif
+train_25789,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_25789.tif
+train_33251,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_33251.tif
+train_20629,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_20629.tif
+train_22356,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22356.tif
+train_31985,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_31985.tif
+train_36458,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36458.tif
+train_8272,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_8272.tif
+train_19819,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19819.tif
+train_36772,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36772.tif
+train_31088,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_31088.tif
+train_38918,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_38918.tif
+train_40413,agriculture clear habitation primary road water,"[1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_40413.tif
+train_17302,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_17302.tif
+train_26462,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26462.tif
+train_11819,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11819.tif
+train_10580,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_10580.tif
+train_2391,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2391.tif
+train_7229,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7229.tif
+train_12742,agriculture clear cultivation habitation primary,"[1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12742.tif
+train_23311,agriculture cultivation haze primary,"[1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23311.tif
+train_4854,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_4854.tif
+train_20798,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_20798.tif
+train_14691,agriculture clear cultivation primary water,"[1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14691.tif
+train_14562,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14562.tif
+train_12714,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12714.tif
+train_20433,bare_ground clear,"[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",images/tif/train_20433.tif
+train_36120,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36120.tif
+train_8134,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_8134.tif
+train_20334,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_20334.tif
+train_40425,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_40425.tif
+train_29603,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_29603.tif
+train_24753,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_24753.tif
+train_26774,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26774.tif
+train_30050,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_30050.tif
+train_27360,agriculture clear habitation primary road water,"[1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_27360.tif
+train_13894,clear water,"[0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13894.tif
+train_3349,clear water,"[0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_3349.tif
+train_24144,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_24144.tif
+train_28300,clear cultivation primary slash_burn,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]",images/tif/train_28300.tif
+train_19631,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19631.tif
+train_12009,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12009.tif
+train_11387,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11387.tif
+train_19493,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19493.tif
+train_8598,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_8598.tif
+train_35849,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35849.tif
+train_35706,cultivation partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35706.tif
+train_18742,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18742.tif
+train_32049,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32049.tif
+train_2898,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2898.tif
+train_36263,clear cultivation primary,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36263.tif
+train_18765,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18765.tif
+train_22922,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22922.tif
+train_22385,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22385.tif
+train_35013,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35013.tif
+train_35465,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35465.tif
+train_2041,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2041.tif
+train_36111,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36111.tif
+train_2620,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2620.tif
+train_12390,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12390.tif
+train_37808,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37808.tif
+train_23430,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23430.tif
+train_15225,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15225.tif
+train_27250,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_27250.tif
+train_28141,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28141.tif
+train_12177,cultivation partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12177.tif
+train_39993,clear habitation water,"[0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39993.tif
+train_2185,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2185.tif
+train_18260,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18260.tif
+train_5006,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_5006.tif
+train_966,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_966.tif
+train_28084,agriculture cultivation haze primary road,"[1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28084.tif
+train_7768,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7768.tif
+train_16918,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_16918.tif
+train_27989,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_27989.tif
+train_28179,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28179.tif
+train_18194,agriculture clear cultivation habitation primary road water,"[1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18194.tif
+train_31145,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_31145.tif
+train_39294,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39294.tif
+train_32764,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32764.tif
+train_8117,clear habitation primary road water,"[1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_8117.tif
+train_13621,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13621.tif
+train_21062,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_21062.tif
+train_35730,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35730.tif
+train_38502,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_38502.tif
+train_37063,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37063.tif
+train_26437,agriculture clear water,"[0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26437.tif
+train_33171,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_33171.tif
+train_18358,agriculture clear habitation primary water,"[1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18358.tif
+train_23365,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23365.tif
+train_18897,bare_ground clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",images/tif/train_18897.tif
+train_38413,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_38413.tif
+train_27874,agriculture clear primary water,"[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_27874.tif
+train_36029,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36029.tif
+train_23343,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23343.tif
+train_15052,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15052.tif
+train_18100,agriculture clear primary water,"[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18100.tif
+train_20930,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_20930.tif
+train_3061,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_3061.tif
+train_13009,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13009.tif
+train_26387,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26387.tif
+train_17016,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_17016.tif
+train_14975,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14975.tif
+train_22104,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22104.tif
+train_5007,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_5007.tif
+train_23302,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23302.tif
+train_23745,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23745.tif
+train_16533,bare_ground clear primary road,"[1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",images/tif/train_16533.tif
+train_14774,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14774.tif
+train_32760,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32760.tif
+train_26114,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26114.tif
+train_8464,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_8464.tif
+train_33950,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_33950.tif
+train_34029,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_34029.tif
+train_15047,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15047.tif
+train_37270,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37270.tif
+train_13825,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13825.tif
+train_36477,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36477.tif
+train_1847,artisinal_mine clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]",images/tif/train_1847.tif
+train_18172,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18172.tif
+train_21006,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_21006.tif
+train_40412,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_40412.tif
+train_1832,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_1832.tif
+train_8700,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_8700.tif
+train_10434,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_10434.tif
+train_20130,clear habitation primary road,"[1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_20130.tif
+train_15823,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15823.tif
+train_16081,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_16081.tif
+train_19752,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19752.tif
+train_30728,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_30728.tif
+train_566,blooming clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",images/tif/train_566.tif
+train_11002,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11002.tif
+train_13969,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13969.tif
+train_20829,clear cultivation primary,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_20829.tif
+train_13370,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13370.tif
+train_31194,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_31194.tif
+train_1220,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_1220.tif
+train_21131,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_21131.tif
+train_6737,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_6737.tif
+train_16825,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_16825.tif
+train_15864,partly_cloudy primary road,"[1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15864.tif
+train_35217,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35217.tif
+train_10334,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_10334.tif
+train_1504,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_1504.tif
+train_7543,agriculture clear cultivation primary road,"[1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7543.tif
+train_30684,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_30684.tif
+train_9839,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_9839.tif
+train_2486,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2486.tif
+train_37367,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37367.tif
+train_28634,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28634.tif
+train_3620,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_3620.tif
+train_36361,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36361.tif
+train_25857,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_25857.tif
+train_21492,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_21492.tif
+train_36484,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36484.tif
+train_31514,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_31514.tif
+train_11548,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11548.tif
+train_21567,clear conventional_mine primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]",images/tif/train_21567.tif
+train_11310,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11310.tif
+train_28455,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28455.tif
+train_16243,agriculture partly_cloudy primary road water,"[1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_16243.tif
+train_33863,agriculture blooming clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",images/tif/train_33863.tif
+train_21321,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_21321.tif
+train_26072,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26072.tif
+train_29715,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_29715.tif
+train_4959,blooming clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",images/tif/train_4959.tif
+train_22306,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22306.tif
+train_34190,clear cultivation primary,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_34190.tif
+train_35567,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35567.tif
+train_26130,haze primary water,"[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26130.tif
+train_15704,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15704.tif
+train_32380,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32380.tif
+train_26014,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26014.tif
+train_6777,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_6777.tif
+train_22757,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22757.tif
+train_13684,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13684.tif
+train_25690,clear primary road,"[1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_25690.tif
+train_38589,haze primary water,"[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_38589.tif
+train_28704,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28704.tif
+train_24672,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_24672.tif
+train_5930,agriculture haze primary,"[1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_5930.tif
+train_14458,agriculture clear primary water,"[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14458.tif
+train_12658,agriculture bare_ground clear,"[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",images/tif/train_12658.tif
+train_27245,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_27245.tif
+train_26624,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26624.tif
+train_22843,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22843.tif
+train_10104,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_10104.tif
+train_12246,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12246.tif
+train_39025,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39025.tif
+train_36903,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36903.tif
+train_24434,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_24434.tif
+train_15408,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15408.tif
+train_29798,clear cultivation primary,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_29798.tif
+train_1035,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_1035.tif
+train_36792,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36792.tif
+train_15443,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15443.tif
+train_39968,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39968.tif
+train_31086,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_31086.tif
+train_14541,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14541.tif
+train_7887,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7887.tif
+train_32971,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32971.tif
+train_25109,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_25109.tif
+train_15343,agriculture clear habitation primary,"[1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_15343.tif
+train_39538,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39538.tif
+train_11371,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11371.tif
+train_7101,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7101.tif
+train_6145,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_6145.tif
+train_11621,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11621.tif
+train_3192,agriculture partly_cloudy primary road,"[1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_3192.tif
+train_32423,partly_cloudy primary road,"[1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32423.tif
+train_28216,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28216.tif
+train_434,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_434.tif
+train_14793,bare_ground clear,"[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",images/tif/train_14793.tif
+train_32169,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_32169.tif
+train_24146,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_24146.tif
+train_36921,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36921.tif
+train_22721,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22721.tif
+train_31731,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_31731.tif
+train_38685,artisinal_mine partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]",images/tif/train_38685.tif
+train_7722,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7722.tif
+train_24343,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_24343.tif
+train_35751,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35751.tif
+train_35386,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35386.tif
+train_23865,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23865.tif
+train_12989,clear water,"[0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12989.tif
+train_27704,agriculture clear cultivation habitation primary road,"[1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_27704.tif
+train_26840,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26840.tif
+train_29726,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_29726.tif
+train_9636,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_9636.tif
+train_39283,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39283.tif
+train_19568,agriculture haze primary road water,"[1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19568.tif
+train_37714,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37714.tif
+train_14056,agriculture clear cultivation primary road,"[1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_14056.tif
+train_28532,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_28532.tif
+train_11655,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11655.tif
+train_26262,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26262.tif
+train_19728,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19728.tif
+train_5387,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_5387.tif
+train_11732,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11732.tif
+train_36035,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36035.tif
+train_6039,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_6039.tif
+train_7823,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7823.tif
+train_22647,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22647.tif
+train_18605,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18605.tif
+train_38021,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_38021.tif
+train_36408,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36408.tif
+train_36320,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_36320.tif
+train_567,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_567.tif
+train_10291,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_10291.tif
+train_2198,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2198.tif
+train_13041,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13041.tif
+train_7561,agriculture cultivation partly_cloudy primary water,"[1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7561.tif
+train_392,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_392.tif
+train_34554,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_34554.tif
+train_26925,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_26925.tif
+train_22727,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22727.tif
+train_575,clear primary road,"[1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_575.tif
+train_2826,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_2826.tif
+train_7269,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7269.tif
+train_3527,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_3527.tif
+train_19931,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_19931.tif
+train_234,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_234.tif
+train_11264,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_11264.tif
+train_16281,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_16281.tif
+train_18114,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_18114.tif
+train_37873,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37873.tif
+train_6843,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_6843.tif
+train_39,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_39.tif
+train_22139,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22139.tif
+train_24065,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_24065.tif
+train_27190,cultivation haze primary,"[1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_27190.tif
+train_7569,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_7569.tif
+train_33605,agriculture clear primary water,"[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_33605.tif
+train_10779,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_10779.tif
+train_13745,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_13745.tif
+train_35806,agriculture partly_cloudy,"[0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_35806.tif
+train_37348,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_37348.tif
+train_12096,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_12096.tif
+train_22895,clear cultivation primary,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_22895.tif
+train_23996,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",images/tif/train_23996.tif
