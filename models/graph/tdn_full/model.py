@@ -12,24 +12,16 @@ graph={
         'padding':'same'
     },
     'down_path':{
-        'layers_list': [4,5,7,10]
+        'layers_list': [1,1,1,1,1]
     },
-    'bottleneck': False,
+    'bottleneck': 1,
     'output_layers': [
         {
             'type':'Flatten'
         },
         { 
             'type':'fc',
-            'units': 5248
-        },
-        { 
-            'type':'fc',
-            'units': 2624 
-        },
-        { 
-            'type':'fc',
-            'units': 1312 
+            'units': 2560 
         },
         {
             'type':'Dense',
