@@ -1,101 +1,101 @@
 image_name,tags,labels,paths
-train_32212,clear cultivation primary,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_32212.tif
-train_36730,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_36730.tif
-train_14414,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_14414.tif
-train_26484,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_26484.tif
-train_16641,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_16641.tif
-train_34644,agriculture bare_ground clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_34644.tif
-train_35683,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_35683.tif
-train_29019,cultivation haze primary water,"[1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_29019.tif
-train_7072,agriculture clear primary water,"[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_7072.tif
-train_1026,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_1026.tif
-train_28913,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_28913.tif
-train_19895,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_19895.tif
-train_2532,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_2532.tif
-train_16190,agriculture haze primary road water,"[1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_16190.tif
-train_40434,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_40434.tif
-train_435,bare_ground clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_435.tif
-train_5475,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_5475.tif
-train_13311,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_13311.tif
-train_23010,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_23010.tif
-train_20944,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_20944.tif
-train_35646,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_35646.tif
-train_19840,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_19840.tif
-train_18141,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_18141.tif
-train_17881,agriculture clear cultivation habitation primary road,"[1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_17881.tif
-train_36493,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_36493.tif
-train_19552,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_19552.tif
-train_4089,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_4089.tif
-train_39176,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_39176.tif
-train_10885,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_10885.tif
-train_31764,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_31764.tif
-train_29972,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_29972.tif
-train_23112,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_23112.tif
-train_33260,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_33260.tif
-train_38556,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_38556.tif
-train_19471,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_19471.tif
-train_39320,bare_ground clear cultivation habitation primary water,"[1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_39320.tif
-train_14622,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_14622.tif
-train_11394,agriculture partly_cloudy primary road water,"[1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_11394.tif
-train_24315,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_24315.tif
-train_12821,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_12821.tif
-train_1893,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_1893.tif
-train_37668,agriculture partly_cloudy primary road,"[1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_37668.tif
-train_35462,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_35462.tif
-train_15745,haze primary water,"[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_15745.tif
-train_6919,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_6919.tif
-train_29393,agriculture clear habitation primary road water,"[1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_29393.tif
-train_13747,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_13747.tif
-train_2567,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_2567.tif
-train_21053,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_21053.tif
-train_2194,clear habitation primary water,"[1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_2194.tif
-train_2529,partly_cloudy primary road,"[1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_2529.tif
-train_21898,clear habitation primary road water,"[1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_21898.tif
-train_10453,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_10453.tif
-train_17479,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_17479.tif
-train_30773,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_30773.tif
-train_34319,clear cultivation habitation primary road slash_burn,"[1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0]",/home/brook/data/planet/train-tif/train_34319.tif
-train_10267,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_10267.tif
-train_37776,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_37776.tif
-train_25432,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_25432.tif
-train_1461,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_1461.tif
-train_35894,artisinal_mine clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_35894.tif
-train_1079,clear cultivation primary,"[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_1079.tif
-train_36464,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_36464.tif
-train_39749,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_39749.tif
-train_35424,agriculture clear habitation primary,"[1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_35424.tif
-train_38210,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_38210.tif
-train_32056,agriculture clear cultivation primary road,"[1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_32056.tif
-train_17145,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_17145.tif
-train_5311,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_5311.tif
-train_39209,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_39209.tif
-train_27537,clear habitation primary road water,"[1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_27537.tif
-train_9214,bare_ground clear cultivation primary water,"[1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_9214.tif
-train_19604,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_19604.tif
-train_31449,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_31449.tif
-train_12477,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_12477.tif
-train_16623,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_16623.tif
-train_4340,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_4340.tif
-train_13476,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_13476.tif
-train_6400,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_6400.tif
-train_3918,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_3918.tif
-train_37417,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_37417.tif
-train_21964,clear conventional_mine primary road,"[1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]",/home/brook/data/planet/train-tif/train_21964.tif
-train_11053,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_11053.tif
-train_12321,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_12321.tif
-train_11405,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_11405.tif
-train_19032,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_19032.tif
-train_16711,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_16711.tif
-train_18152,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_18152.tif
-train_11607,agriculture partly_cloudy primary road water,"[1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_11607.tif
-train_9278,agriculture partly_cloudy primary road,"[1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_9278.tif
-train_8244,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_8244.tif
-train_33696,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_33696.tif
-train_2338,agriculture clear cultivation habitation primary water,"[1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_2338.tif
-train_3534,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_3534.tif
-train_5895,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_5895.tif
-train_23191,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_23191.tif
-train_22331,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_22331.tif
-train_30409,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_30409.tif
-train_3030,agriculture clear primary water,"[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_3030.tif
-train_17518,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/home/brook/data/planet/train-tif/train_17518.tif
+train_4380,agriculture clear primary road,"[1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_4380.tif
+train_27782,agriculture clear primary road water,"[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_27782.tif
+train_4410,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_4410.tif
+train_34104,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_34104.tif
+train_19891,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_19891.tif
+train_37692,partly_cloudy primary water,"[1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_37692.tif
+train_31642,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_31642.tif
+train_21131,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_21131.tif
+train_6930,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_6930.tif
+train_5769,agriculture cultivation partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_5769.tif
+train_31919,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_31919.tif
+train_37377,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_37377.tif
+train_28375,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_28375.tif
+train_14653,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_14653.tif
+train_2753,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_2753.tif
+train_37959,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_37959.tif
+train_28939,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_28939.tif
+train_34136,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_34136.tif
+train_18424,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_18424.tif
+train_18439,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_18439.tif
+train_21547,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_21547.tif
+train_1965,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_1965.tif
+train_36103,blooming clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",/data/planet/train-tif/train_36103.tif
+train_39923,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_39923.tif
+train_15058,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_15058.tif
+train_30615,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_30615.tif
+train_29854,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_29854.tif
+train_1322,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_1322.tif
+train_33294,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_33294.tif
+train_12147,agriculture partly_cloudy primary road water,"[1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_12147.tif
+train_25578,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_25578.tif
+train_26470,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_26470.tif
+train_19548,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_19548.tif
+train_23773,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_23773.tif
+train_2890,agriculture clear primary road water,"[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_2890.tif
+train_18467,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_18467.tif
+train_20649,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_20649.tif
+train_40222,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_40222.tif
+train_40051,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_40051.tif
+train_32941,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_32941.tif
+train_9665,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_9665.tif
+train_31828,agriculture cultivation habitation partly_cloudy primary road,"[1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_31828.tif
+train_30726,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_30726.tif
+train_37327,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_37327.tif
+train_20748,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_20748.tif
+train_14860,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_14860.tif
+train_26949,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_26949.tif
+train_29473,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_29473.tif
+train_586,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_586.tif
+train_32884,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_32884.tif
+train_19807,blooming clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]",/data/planet/train-tif/train_19807.tif
+train_20374,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_20374.tif
+train_32076,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_32076.tif
+train_12602,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_12602.tif
+train_23846,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_23846.tif
+train_29013,haze primary water,"[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_29013.tif
+train_36550,agriculture clear primary road water,"[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_36550.tif
+train_31862,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_31862.tif
+train_35968,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_35968.tif
+train_38409,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_38409.tif
+train_29091,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_29091.tif
+train_38276,agriculture clear habitation primary road,"[1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_38276.tif
+train_22978,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_22978.tif
+train_2781,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_2781.tif
+train_24806,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_24806.tif
+train_26676,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_26676.tif
+train_11470,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_11470.tif
+train_7526,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_7526.tif
+train_20549,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_20549.tif
+train_31269,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_31269.tif
+train_21544,clear habitation primary road water,"[1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_21544.tif
+train_13427,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_13427.tif
+train_4891,habitation partly_cloudy primary road water,"[1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_4891.tif
+train_6332,agriculture partly_cloudy primary road water,"[1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_6332.tif
+train_18645,clear primary water,"[1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_18645.tif
+train_17783,artisinal_mine clear habitation primary water,"[1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]",/data/planet/train-tif/train_17783.tif
+train_31830,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_31830.tif
+train_28457,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_28457.tif
+train_11736,haze primary,"[1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_11736.tif
+train_27040,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_27040.tif
+train_36117,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_36117.tif
+train_3904,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_3904.tif
+train_40310,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_40310.tif
+train_7264,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_7264.tif
+train_32440,partly_cloudy primary,"[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_32440.tif
+train_998,agriculture cultivation partly_cloudy primary road,"[1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_998.tif
+train_25159,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_25159.tif
+train_25206,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_25206.tif
+train_5173,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_5173.tif
+train_4843,cloudy,"[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_4843.tif
+train_11927,agriculture clear primary,"[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_11927.tif
+train_29243,clear habitation primary water,"[1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_29243.tif
+train_5819,clear primary road water,"[1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_5819.tif
+train_36255,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_36255.tif
+train_16317,agriculture partly_cloudy primary,"[1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_16317.tif
+train_380,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_380.tif
+train_2342,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_2342.tif
+train_4675,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_4675.tif
+train_3661,agriculture clear cultivation primary,"[1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_3661.tif
+train_35906,clear primary,"[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",/data/planet/train-tif/train_35906.tif
