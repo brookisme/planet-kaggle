@@ -5,3 +5,5 @@ notebooks/NDVI.ipynb | nbpy/NDVI.nbpy.py
 notebooks/ModelExplorer.ipynb | nbpy/ModelExplorer.nbpy.py
 
 notebooks/ConvTestsHistory.ipynb | nbpy/ConvTestsHistory.nbpy.py
+notebooks/DFGenExample.ipynb | nbpy/DFGenExample.nbpy.py
+models/graph/tdn_full/Explorer.ipynb | nbpy/Explorer.nbpy.py

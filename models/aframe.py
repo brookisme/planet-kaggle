@@ -23,7 +23,7 @@ DEFAULT_OUTPUT_ACTIVATION='sigmoid'
 DEFAULT_CONV_LAYERS=[
     (32,[3]),
     (64,[3]),
-    (16,[3])]
+    (128,[3])]
 DEFAULT_FC_LAYERS=[
     256,
     512]
@@ -39,7 +39,7 @@ class AF_BASE(MODEL_BASE):
     #
     def _conv_block(self,x,filters,layers=[3],pool_size=(2,2)):
         for size in layers:
-            x=ZeroPadding2D((1, 1))(x)
+            x=ZeroPadding2D((size-2, size-2))(x)
             x=Conv2D(filters, (size,size), activation=self.conv_activation)(x)
         if self.batch_norm: x=BatchNormalization()(x)
         x=MaxPooling2D(pool_size=pool_size)(x)
