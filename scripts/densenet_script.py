@@ -27,6 +27,8 @@ import models.base as base; reload(base)
 import helpers.planet as helpers; reload(helpers)
 import helpers.dfgen as gen; reload(gen)
 import models.resnet as resnet; reload(resnet)
+import models.densenet as densenet; reload(densenet)
+
 
 
 DATA_ROOT=os.environ.get('DATA')
