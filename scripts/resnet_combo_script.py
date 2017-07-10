@@ -64,17 +64,16 @@ WATER_LABELS=['water']
 CULTIVATION_LABELS=['cultivation'] 
 HABITATION_LABELS=['habitation'] 
 BAREGROUND_LABELS=['bare_ground'] 
-
 WEATHER_LABELS=['clear','partly_cloudy','haze','cloudy'] 
 RARE_LABELS=['selective_logging','artisinal_mine','blooming','slash_burn','conventional_mine','blow_down']
-LABEL_SAMPLE_CSV=os.path.join(ROOT,'train_sample.csv')
+
 
 image_types=['jpg']+['tif']*8
 tag_types=[WEATHER_LABELS,RARE_LABELS,PRIMARY_LABELS,AGRICULTURE_LABELS,ROAD_LABELS,WATER_LABELS,CULTIVATION_LABELS,HABITATION_LABELS,BAREGROUND_LABELS]
 labels_types=['weather','rare','primary','agriculture','road','water','cultivation','habitation','bareground']
 
 
-BATCH_SIZE=32
+BATCH_SIZE=1
 gen=DFGen(csv_file=f'{ROOT}/train.csv',csv_sep=',',batch_size=BATCH_SIZE)
 gen.save(path='combo_train.csv',split_path='combo_valid.csv')
 
@@ -88,9 +87,10 @@ for tag_type in tag_types:
     train_gens.append(tr_gen)
     valid_gens.append(val_gen)
 
-    
+
 resnet_models=[resnet.ResNet50(loss_func='categorical_crossentropy',
                                target_dim=len(tag_types[i]),
+                               optimizer='sgd',
                                metrics=['accuracy'],
                                output_activation='softmax',image_ext=image_types[i]) for i in range(len(image_types))]
 train_sz=train_gens[0].size
