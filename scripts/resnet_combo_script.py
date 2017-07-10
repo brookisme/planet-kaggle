@@ -78,28 +78,29 @@ BATCH_SIZE=32
 gen=DFGen(csv_file=f'{ROOT}/train.csv',csv_sep=',',batch_size=BATCH_SIZE)
 gen.save(path='combo_train.csv',split_path='combo_valid.csv')
 
-train_gens=[DFGen(csv_file='combo_train.csv',csv_sep=',',batch_size=BATCH_SIZE)
-            .reduce_columns(*tag_type,others=False) for tag_type in tag_types]
+train_gens=[]
+valid_gens=[]
+for tag_type in tag_types:
+    tr_gen=DFGen(csv_file='combo_train.csv',csv_sep=',',batch_size=BATCH_SIZE)
+    val_gen=DFGen(csv_file='combo_valid.csv',csv_sep=',',batch_size=BATCH_SIZE)
+    tr_gen.reduce_columns(*tag_type,others=False)
+    val_gen.reduce_columns(*tag_type,others=False)
+    train_gens.append(tr_gen)
+    valid_gens.append(val_gen)
 
-valid_gens=[DFGen(csv_file='combo_valid.csv',csv_sep=',',batch_size=BATCH_SIZE)
-            .reduce_columns(*tag_type,others=False) for tag_type in tag_types]
-
-
+    
 resnet_models=[resnet.ResNet50(loss_func='categorical_crossentropy',
-                               target_dim=len(tag_types[i])+1,
+                               target_dim=len(tag_types[i]),
                                metrics=['accuracy'],
                                output_activation='softmax',image_ext=image_types[i]) for i in range(len(image_types))]
-
-
+train_sz=train_gens[0].size
+valid_sz=valid_gens[0].size
 
 resnet_models[0].fit_gen(batch_size=BATCH_SIZE,epochs=100,steps_per_epoch=20,
-                       train_gen=train_gen,valid_gen=valid_gen,train_sz=train_sz,valid_sz=valid_sz,
+                       train_gen=train_gens[0],valid_gen=valid_gens[0],train_sz=train_sz,valid_sz=valid_sz,
                        history_name='weather',reduce_lr=True)
 
-
-
-
-
+resnet_models[0].model().save_weights(f'{WEIGHT_ROOT}/resnet_tags0.hdf5')
 
 
 
