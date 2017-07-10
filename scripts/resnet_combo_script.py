@@ -68,7 +68,7 @@ WEATHER_LABELS=['clear','partly_cloudy','haze','cloudy']
 RARE_LABELS=['selective_logging','artisinal_mine','blooming','slash_burn','conventional_mine','blow_down']
 
 
-image_types=['jpg']+['tif']*8
+image_types=['tif']*9
 tag_types=[WEATHER_LABELS,RARE_LABELS,PRIMARY_LABELS,AGRICULTURE_LABELS,ROAD_LABELS,WATER_LABELS,CULTIVATION_LABELS,HABITATION_LABELS,BAREGROUND_LABELS]
 labels_types=['weather','rare','primary','agriculture','road','water','cultivation','habitation','bareground']
 
