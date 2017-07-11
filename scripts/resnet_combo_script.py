@@ -73,7 +73,7 @@ tag_types=[WEATHER_LABELS,RARE_LABELS,PRIMARY_LABELS,AGRICULTURE_LABELS,ROAD_LAB
 labels_types=['weather','rare','primary','agriculture','road','water','cultivation','habitation','bareground']
 
 
-BATCH_SIZE=1
+BATCH_SIZE=32
 gen=DFGen(csv_file=f'{ROOT}/train.csv',csv_sep=',',batch_size=BATCH_SIZE)
 gen.save(path='combo_train.csv',split_path='combo_valid.csv')
 
