@@ -100,7 +100,11 @@ resnet_models[0].fit_gen(batch_size=BATCH_SIZE,epochs=100,steps_per_epoch=20,
                        train_gen=train_gens[0],valid_gen=valid_gens[0],train_sz=train_sz,valid_sz=valid_sz,
                        history_name='weather',reduce_lr=True)
 
-resnet_models[0].model().save_weights(f'{WEIGHT_ROOT}/resnet_tags0.hdf5')
+for i in range(len(tag_types)):
+    resnet_models[i].fit_gen(batch_size=BATCH_SIZE,epochs=100,steps_per_epoch=30,
+                       train_gen=train_gens[i],valid_gen=valid_gens[i],train_sz=train_sz,valid_sz=valid_sz,
+                       history_name=f'{TAGNAMES[i]}',reduce_lr=True)
+    resnet_models[i].model().save_weights(f'{WEIGHT_ROOT}/resnet_{TAGNAMES[i]}.hdf5')
 
 
 
