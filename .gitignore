@@ -19,6 +19,7 @@ include
 # Codebase
 playground.py
 update.sh
+weight/
 
 # PYPI
 dist/
