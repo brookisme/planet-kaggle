@@ -118,7 +118,7 @@ class ResNet50(ResNet50_BASE):
             x = Conv2D(filters=64, kernel_size=(7, 7), strides=(2, 2),padding='same')(x)
             x = BatchNormalization()(x)
             x = Activation('relu')(x)
-            x = MaxPooling2D(pool_size=(3, 3), strides=(2, 2))(x)
+            x = MaxPooling2D(pool_size=(3, 3), strides=(2, 2),padding='same')(x)
 
             x = self._conv_block(x, filters=[64, 64, 256, 256], strides=[1,1,1,1])
             x = self._identity_block(x, filters=[64, 64, 256])
@@ -140,7 +140,7 @@ class ResNet50(ResNet50_BASE):
             x = self._identity_block(x, filters=[512, 512, 2048])
             x = self._identity_block(x, filters=[512, 512, 2048])
 
-            x = AveragePooling2D(pool_size=(7, 7))(x)
+            x = AveragePooling2D(pool_size=(7, 7),padding='same')(x)
 
             x = Flatten()(x)
             outputs = Dense(self.target_dim, activation=self.output_activation)(x)
