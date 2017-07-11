@@ -185,10 +185,17 @@ class PlanetData(object):
         """ The input tags is a string containing space-seperated 
             strings, the labels. This is converted to a binary-valued List Vector
             - list ordering given by global TAGS or the tags property
+            - a final entry is created for no-tag present.
         """
         # make sure the binary vec is created from restricted tags     
         tags=tags.split(' ')
-        return [int(label in tags) for label in self.tags]
+        tagvec=[int(label in tags) for label in self.tags]
+        if 1 in tagvec:
+            tagvec.append(0)
+        else:
+            tagvec.append(1)
+        return tagvec
+
 
 
     def _label_to_list(self,df):

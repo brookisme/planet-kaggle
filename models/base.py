@@ -23,8 +23,8 @@ DATA_DIR=f'{DATA_ROOT}/{PROJECT_NAME}'
 WEIGHT_DIR=f'{WEIGHT_ROOT}/{PROJECT_NAME}'
 OUTPUT_DIR='out'
 HISTORY_DIR=f'{OUTPUT_DIR}/history'
-BANDS=4
-BATCH_INPUT_SHAPE=(None,256,256,BANDS)
+TIF_BATCH_INPUT_SHAPE=(None,256,256,4)
+JPG_BATCH_INPUT_SHAPE=(None,256,256,3)
 TARGET_DIM=17
 DEFAULT_OPT='adam'
 DEFAULT_DR=0.5
@@ -49,13 +49,15 @@ class MODEL_BASE(object):
     VERBOSE=1
 
     def __init__(self,
-            batch_input_shape=BATCH_INPUT_SHAPE,
+            batch_input_shape=None,
+            image_ext='tif',
             optimizer=DEFAULT_OPT,
             loss_func=DEFAULT_LOSS_FUNC,
             target_dim=TARGET_DIM,
             metrics=DEFAULT_METRICS,
             auto_compile=True):
-        self.batch_input_shape=batch_input_shape
+        self.image_ext=image_ext
+        self.batch_input_shape=batch_input_shape or self._default_batch_input_shape()
         self.optimizer=optimizer
         self.loss_func=loss_func
         self.target_dim=target_dim
@@ -64,9 +66,8 @@ class MODEL_BASE(object):
         self.history=None
         self._model=None
 
-
     def load_weights(self,pdata):
-        # We may want to allow this to pass the version number
+        # We may want to allow this to pass the version number 
         self.model().load_weights(f'{self._weight_path(pdata)}/sz{pdata.train_size}_tags{pdata.tags_to_string()}_v{pdata.version}.hdf5')
 
 
@@ -117,6 +118,27 @@ class MODEL_BASE(object):
         else:
             return pred
 
+    def predict_dir(self, 
+            image_dir, 
+            batch_size, 
+            data_root=DATA_DIR):
+        """ predicts all files in data_root/image_dir
+        """
+
+        abs_dir=f'{data_root}/{image_dir}'
+        image_names=os.listdir(abs_dir)
+        batch_gen=self._dir_batches(image_dir, batch_size, data_root=DATA_DIR)
+        predictions=[]
+        i=1
+        while (i-1)*batch_size < len(image_names):
+            image_name_batch=next(batch_gen)
+            pred_batch=[self.model().predict(np.expand_dims(io.imread(image_name),axis=0)) for image_name in image_name_batch]
+            predictions=predictions+pred_batch
+            i+=1
+        return dict(zip(image_names,predictions))
+
+
+
 
     def fit_gen(self,
             epochs=None,
@@ -125,7 +147,7 @@ class MODEL_BASE(object):
             valid_sz=None,
             train_gen=None,
             valid_gen=None,
-            sample_pct=1.0,
+            steps_per_epoch=10,
             batch_size=32,
             ndvi_images=False,
             history=DEFAULT_HISTORY,
@@ -146,14 +168,15 @@ class MODEL_BASE(object):
                 -   checkput_name:
                         saves weights after each epoch. file path is
                         {WEIGHT_DIR}/{checkpoint_name}.{epoch}-{loss}.hdf5
+                -   number of images trained is epochs * batch_size * steps_per_epoch
         """
         if pdata:
             if not train_sz: train_sz=pdata.train_size
             if not valid_sz: valid_sz=pdata.valid_size
             train_gen=DFGen(
-                dataframe=pdata.train_df,batch_size=batch_size,ndvi_images=ndvi_images)
+                dataframe=pdata.train_df,image_ext=self.image_ext,batch_size=batch_size,ndvi_images=ndvi_images)
             valid_gen=DFGen(
-                dataframe=pdata.valid_df,batch_size=batch_size,ndvi_images=ndvi_images)
+                dataframe=pdata.valid_df,image_ext=self.image_ext,batch_size=batch_size,ndvi_images=ndvi_images)
 
         if history:
             path=f'{HISTORY_DIR}/{history_name}'
@@ -172,17 +195,23 @@ class MODEL_BASE(object):
         if reduce_lr:
             callbacks.append(LR_REDUCER)
             
-        steps,validation_steps=utils.gen_params(
-            train_sz,valid_sz,epochs,sample_pct)
+        validation_steps=valid_sz/batch_size
+
         return self.model().fit_generator(
             generator=train_gen,
             validation_data=valid_gen,
-            steps_per_epoch=steps,
+            steps_per_epoch=steps_per_epoch,
             validation_steps=validation_steps,
             epochs=epochs,
             callbacks=callbacks,
             verbose=self.VERBOSE)
 
+
+    def _default_batch_input_shape(self):
+        if self.image_ext=='jpg': 
+            return JPG_BATCH_INPUT_SHAPE
+        else: 
+            return TIF_BATCH_INPUT_SHAPE
 
     def _image_path(self,name=None,file_ext=None,data_root=DATA_DIR,image_dir=None):
         fpath=f'{data_root}'
@@ -192,12 +221,23 @@ class MODEL_BASE(object):
         return fpath
 
 
+    def _dir_batches(self, image_dir, batch_size, data_root=DATA_DIR):
+        """ Inputs: directpry and batch_size
+            Returns: generator yieling batches of image-pathnames
+        """
+        abs_dir=f'{data_root}/{image_dir}'
+        image_names=os.listdir(abs_dir)
+        image_names=[self._image_path(image_name, data_root=DATA_DIR, image_dir=image_dir) for image_name in image_names]
+        l = len(image_names)
+        for i in range(0, l, batch_size):
+            yield image_names[i:min(i + batch_size, l)]
+
+
     def _weight_path(self,pdata):
         tag_weight_path=f'{WEIGHT_DIR}/tags_{pdata.tags_to_string()}'
         if not os.path.isdir(tag_weight_path):
             os.mkdir(tag_weight_path)
         return tag_weight_path
-
 
 
 
