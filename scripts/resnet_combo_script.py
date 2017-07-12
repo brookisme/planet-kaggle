@@ -73,7 +73,11 @@ tag_types=[WEATHER_LABELS,RARE_LABELS,PRIMARY_LABELS,AGRICULTURE_LABELS,ROAD_LAB
 labels_types=['weather','rare','primary','agriculture','road','water','cultivation','habitation','bareground']
 
 
+<<<<<<< HEAD
 BATCH_SIZE=32
+=======
+BATCH_SIZE=2
+>>>>>>> d7e73e6c0b0c03efa9d445dcff0ed56fdd52d9e9
 
 train_gens=[]
 valid_gens=[]
