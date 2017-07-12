@@ -73,13 +73,13 @@ kgres.model().summary()
 #
 # MODEL-RUN
 #
-RUN_NAME='rn17-0712-1'
+RUN_NAME='rn17-0712-2'
 
 
 kgres.fit_gen(
-   epochs=20,
+   epochs=60,
    train_gen=train_gen,
-   train_steps=100,
+   train_steps=200,
    validation_gen=valid_gen,
    validation_steps=100,
    history_name=RUN_NAME,
