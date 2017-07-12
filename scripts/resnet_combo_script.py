@@ -73,17 +73,13 @@ tag_types=[WEATHER_LABELS,RARE_LABELS,PRIMARY_LABELS,AGRICULTURE_LABELS,ROAD_LAB
 labels_types=['weather','rare','primary','agriculture','road','water','cultivation','habitation','bareground']
 
 
-<<<<<<< HEAD
 BATCH_SIZE=32
-=======
-BATCH_SIZE=2
->>>>>>> d7e73e6c0b0c03efa9d445dcff0ed56fdd52d9e9
 
 train_gens=[]
 valid_gens=[]
 for tag_type in tag_types:
-    tr_gen=DFGen(csv_file=f'{REPO_PATH}/datacsvs/train.csv',csv_sep=',',batch_size=BATCH_SIZE)
-    val_gen=DFGen(csv_file=f'{REPO_PATH}/datacsvs/valid.csv',csv_sep=',',batch_size=BATCH_SIZE)
+    tr_gen=DFGen(csv_file=f'{REPO_PATH_GPU81}/datacsvs/train.csv',csv_sep=',',batch_size=BATCH_SIZE)
+    val_gen=DFGen(csv_file=f'{REPO_PATH_GPU81}/datacsvs/valid.csv',csv_sep=',',batch_size=BATCH_SIZE)
     tr_gen.reduce_columns(*tag_type,others=False)
     val_gen.reduce_columns(*tag_type,others=False)
     train_gens.append(tr_gen)
@@ -102,7 +98,7 @@ valid_sz=valid_gens[0].size
 for i in range(len(tag_types)):
     resnet_models[i].fit_gen(batch_size=BATCH_SIZE,epochs=100,steps_per_epoch=30,
                        train_gen=train_gens[i],valid_gen=valid_gens[i],train_sz=train_sz,valid_sz=valid_sz,
-                       history_name=f'{TAGNAMES[i]}',reduce_lr=True)
+                       history_name=f'{labels_types[i]}',reduce_lr=True)
     resnet_models[i].model().save_weights(f'{WEIGHT_ROOT}/resnet_{labels_types[i]}.hdf5')
 
 
