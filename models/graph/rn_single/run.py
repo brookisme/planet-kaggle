@@ -13,10 +13,10 @@ PKR=os.environ['PKR']
 base_csv_root=f'{PKR}/datacsvs'
 train_csv_tmpl='./{}_{}.csv'
 
-DEFAULT_BATCH_SIZE=32
+DEFAULT_BATCH_SIZE=16
 DEFAULT_EPOCHS=20
-DEFAULT_TRAIN_STEPS=100
-DEFAULT_VALID_STEPS=60
+DEFAULT_TRAIN_STEPS=250
+DEFAULT_VALID_STEPS=150
 #
 # SETUP
 #
@@ -32,7 +32,7 @@ graph={
         'network_type': 'RESNET'
     },
     'compile': {
-        'loss_func': 'binary_crossentropy',
+        'loss_func': 'categorical_crossentropy',
         'metrics': ['accuracy'],
         'optimizer': sgd
     },
