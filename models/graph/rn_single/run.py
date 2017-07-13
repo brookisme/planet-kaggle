@@ -32,7 +32,7 @@ graph={
         'network_type': 'RESNET'
     },
     'compile': {
-        'loss_func': 'categorical_crossentropy',
+        'loss_func': 'binary_crossentropy',
         'metrics': ['accuracy'],
         'optimizer': sgd
     },
