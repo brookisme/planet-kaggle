@@ -3,9 +3,12 @@ from pprint import pprint
 from dfgen import DFGen
 from kgraph.functional import RESNET as R
 import keras.backend as K
-from keras.optimizers import SGD, Adam
+from keras.optimizers import SGD
 from keras.callbacks import ReduceLROnPlateau
 import numpy as np
+from keras.models import Model
+from keras.layers import Dense, Dropout
+
 """ NOTES
         OPTIMIZER:
                 Keras SGD DEFAULTS: SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False)
@@ -31,12 +34,6 @@ import numpy as np
 #
 # sgd=SGD(lr=0.1,momentum=0.9,decay=0.0001)
 # callbacks=[ReduceLROnPlateau(patience=5)]
-#
-#
-adam=Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-
-#
-#
 BATCH_SHAPE=(None,256,256,4)
 train_batch_size=32
 valid_batch_size=16
@@ -93,15 +90,49 @@ def norm_brvw(img):
 # GENERATORS
 #
 PKR=os.environ['PKR']
-AUG_N=0
-
-train_csv_path=f'{PKR}/datacsvs/aug_train.{AUG_N}.csv'
-valid_csv_path=f'{PKR}/datacsvs/aug_valid.{AUG_N}.csv'
+rare_tags=['bare_ground','selective_logging','artisinal_mine','blooming','slash_burn','conventional_mine','blow_down']
+#
+# CSVS
+#
+train_csv_path=f'{PKR}/datacsvs/train.csv'
+valid_csv_path=f'{PKR}/datacsvs/valid.csv'
+train_rare_csv_path='train_rare_with_aug.csv'
+valid_rare_csv_path='valid_rare_with_aug.csv'
+# create_rare
 train_gen=DFGen(csv_file=train_csv_path,csv_sep=',',batch_size=train_batch_size,lambda_func=norm_brvw)
 valid_gen=DFGen(csv_file=valid_csv_path,csv_sep=',',batch_size=valid_batch_size,lambda_func=norm_brvw)
-# inspect
-train_gen.dataframe.sample(3)
+train_gen.reduce_columns(*rare_tags,others=False)
+train_gen.require_values(pct=65)
+df=train_gen.augmented_dataframe(rotations=[0,1,2,3])
+df.to_csv(train_rare_csv_path,index=False)
+# train_gen.require_label('blow_down',0.5)
+# train_gen.require_label('conventional_mine',0.5)
+# train_gen.require_label('slash_burn',1)
+# train_gen.require_label('blooming',1)
+# train_gen.require_label('artisinal_mine',2)
+# train_gen.require_label('bare_ground',3)
 
+
+
+
+valid_gen.reduce_columns(*rare_tags,others=False)
+valid_gen.require_values(pct=65)
+# valid_gen.require_label('blow_down',0.5)
+# valid_gen.require_label('conventional_mine',0.5)
+# valid_gen.require_label('slash_burn',1)
+# valid_gen.require_label('blooming',1)
+# valid_gen.require_label('artisinal_mine',2)
+# valid_gen.require_label('bare_ground',3)
+df=valid_gen.augmented_dataframe(rotations=[0,1,2,3])
+df.to_csv(valid_rare_csv_path,index=False)
+
+train_gen=None
+valid_gen=None
+
+train_gen=DFGen(csv_file=train_rare_csv_path,csv_sep=',',batch_size=train_batch_size,lambda_func=norm_brvw,tags=rare_tags)
+valid_gen=DFGen(csv_file=valid_rare_csv_path,csv_sep=',',batch_size=valid_batch_size,lambda_func=norm_brvw,tags=rare_tags)
+train_gen.dataframe.head()
+valid_gen.dataframe.head()
 
 #
 # MODEL
@@ -150,72 +181,48 @@ kgres=R(graph)
 # inspect
 pprint(kgres.graph)
 kgres.load_weights('rn17-brvw-aug0-1.hdf5')
-# kgres.model().summary()
+kgres.model().summary()
+
+
+#
+# FINE TUNE
+#
+
+DIMS=len(train_gen.tags)
+DIMS
+
+
+kgres.model().layers.pop()
+for layer in kgres.model().layers: 
+    layer.trainable=False
+
+
+inputs=kgres.model().input
+x=kgres.model().layers[-1].output
+x=Dense(4096, activation='relu')(x)
+x=Dropout(0.5)(x)
+x=Dense(4096, activation='relu')(x)
+x=Dropout(0.5)(x)
+x=Dense(2048, activation='relu')(x)
+x=Dropout(0.5)(x)
+outputs=Dense(DIMS, activation='sigmoid')(x)
+kgres._model=Model(inputs=inputs,outputs=outputs)
+kgres.model().summary()
+kgres.compile()
+
+
 
 
 #
 # MODEL-RUN
 #
-RUN_NAME='rn17-brvw-aug0-2'
+RUN_NAME='rn17-brvw-rare-rvaug-1'
 
 
 kgres.fit_gen(
-     epochs=20,
+     epochs=10,
      train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
-
-
-
-RUN_NAME='rn17-brvw-aug0-3'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
-
-
-RUN_NAME='rn17-brvw-aug0-4'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
-
-
-RUN_NAME='rn17-brvw-aug0-5'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
-
-
-RUN_NAME='rn17-brvw-aug0-6'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
+     train_steps=50,
      validation_gen=valid_gen,
      validation_steps=100,
      history_name=RUN_NAME,
@@ -224,22 +231,99 @@ kgres.fit_gen(
 
 
 
-kgres.load_weights('rn17-brvw-aug0-1.hdf5')
-adam=Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-kgres.compile(optimizer=adam)
 
-
-RUN_NAME='rn17-brvw-opt0001-1'
+#
+# MODEL-RUN
+#
+RUN_NAME='rn17-brvw-rare-rvaug-2'
 
 
 kgres.fit_gen(
      epochs=20,
      train_gen=train_gen,
-     train_steps=200,
+     train_steps=50,
      validation_gen=valid_gen,
      validation_steps=100,
      history_name=RUN_NAME,
      checkpoint_name=RUN_NAME)
+
+
+RUN_NAME='rn17-brvw-rare-rvaug-3'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=50,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+RUN_NAME='rn17-brvw-rare-rvaug-4'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=50,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+RUN_NAME='rn17-brvw-rare-rvaug-5'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=50,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+
+RUN_NAME='rn17-brvw-rare-rvaug-6'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=50,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+
+
+RUN_NAME='rn17-brvw-rare-rvaug-7'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=50,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+RUN_NAME='rn17-brvw-rare-rvaug-8'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=50,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+
 
 
 

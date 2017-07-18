@@ -3,9 +3,12 @@ from pprint import pprint
 from dfgen import DFGen
 from kgraph.functional import RESNET as R
 import keras.backend as K
-from keras.optimizers import SGD, Adam
+from keras.optimizers import SGD
 from keras.callbacks import ReduceLROnPlateau
 import numpy as np
+from keras.models import Model
+from keras.layers import Dense, Dropout
+
 """ NOTES
         OPTIMIZER:
                 Keras SGD DEFAULTS: SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False)
@@ -31,12 +34,6 @@ import numpy as np
 #
 # sgd=SGD(lr=0.1,momentum=0.9,decay=0.0001)
 # callbacks=[ReduceLROnPlateau(patience=5)]
-#
-#
-adam=Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-
-#
-#
 BATCH_SHAPE=(None,256,256,4)
 train_batch_size=32
 valid_batch_size=16
@@ -93,15 +90,31 @@ def norm_brvw(img):
 # GENERATORS
 #
 PKR=os.environ['PKR']
-AUG_N=0
-
-train_csv_path=f'{PKR}/datacsvs/aug_train.{AUG_N}.csv'
-valid_csv_path=f'{PKR}/datacsvs/aug_valid.{AUG_N}.csv'
+common_tags=['primary','agriculture','road','water','cultivation','habitation']
+#
+# CSVS
+#
+train_csv_path=f'{PKR}/datacsvs/train.csv'
+valid_csv_path=f'{PKR}/datacsvs/valid.csv'
+train_common_csv_path='train_common.csv'
+valid_common_csv_path='valid_common.csv'
+# create_common
 train_gen=DFGen(csv_file=train_csv_path,csv_sep=',',batch_size=train_batch_size,lambda_func=norm_brvw)
 valid_gen=DFGen(csv_file=valid_csv_path,csv_sep=',',batch_size=valid_batch_size,lambda_func=norm_brvw)
-# inspect
-train_gen.dataframe.sample(3)
+train_gen.reduce_columns(*common_tags,others=False)
+train_gen.dataframe.head()
+train_gen.save(train_common_csv_path)
 
+valid_gen.reduce_columns(*common_tags,others=False)
+valid_gen.dataframe.head()
+valid_gen.save(valid_common_csv_path)
+train_gen=None
+valid_gen=None
+
+train_gen=DFGen(csv_file=train_common_csv_path,csv_sep=',',batch_size=train_batch_size,lambda_func=norm_brvw,tags=common_tags)
+valid_gen=DFGen(csv_file=valid_common_csv_path,csv_sep=',',batch_size=valid_batch_size,lambda_func=norm_brvw,tags=common_tags)
+train_gen.dataframe.head()
+valid_gen.dataframe.head()
 
 #
 # MODEL
@@ -150,13 +163,111 @@ kgres=R(graph)
 # inspect
 pprint(kgres.graph)
 kgres.load_weights('rn17-brvw-aug0-1.hdf5')
-# kgres.model().summary()
+kgres.model().summary()
+
+
+#
+# FINE TUNE
+#
+
+DIMS=len(train_gen.tags)
+DIMS
+
+
+kgres.model().layers.pop()
+for layer in kgres.model().layers: 
+    layer.trainable=False
+
+
+inputs=kgres.model().input
+x=kgres.model().layers[-1].output
+x=Dense(4096, activation='relu')(x)
+x=Dropout(0.5)(x)
+x=Dense(4096, activation='relu')(x)
+x=Dropout(0.5)(x)
+x=Dense(2048, activation='relu')(x)
+x=Dropout(0.5)(x)
+outputs=Dense(DIMS, activation='sigmoid')(x)
+kgres._model=Model(inputs=inputs,outputs=outputs)
+kgres.model().summary()
+kgres.compile()
+
+
 
 
 #
 # MODEL-RUN
 #
-RUN_NAME='rn17-brvw-aug0-2'
+RUN_NAME='rn17-brvw-common-1'
+
+
+kgres.fit_gen(
+     epochs=10,
+     train_gen=train_gen,
+     train_steps=200,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+
+
+
+
+#
+# MODEL-RUN
+#
+RUN_NAME='rn17-brvw-common-2'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=200,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+
+RUN_NAME='rn17-brvw-common-3'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=200,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+RUN_NAME='rn17-brvw-common-4'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=200,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+RUN_NAME='rn17-brvw-common-5'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=200,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+
+RUN_NAME='rn17-brvw-common-6'
 
 
 kgres.fit_gen(
@@ -170,7 +281,19 @@ kgres.fit_gen(
 
 
 
-RUN_NAME='rn17-brvw-aug0-3'
+RUN_NAME='rn17-brvw-common-7'
+
+
+kgres.fit_gen(
+     epochs=20,
+     train_gen=train_gen,
+     train_steps=200,
+     validation_gen=valid_gen,
+     validation_steps=100,
+     history_name=RUN_NAME,
+     checkpoint_name=RUN_NAME)
+
+RUN_NAME='rn17-brvw-common-8'
 
 
 kgres.fit_gen(
@@ -183,63 +306,6 @@ kgres.fit_gen(
      checkpoint_name=RUN_NAME)
 
 
-RUN_NAME='rn17-brvw-aug0-4'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
-
-
-RUN_NAME='rn17-brvw-aug0-5'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
-
-
-RUN_NAME='rn17-brvw-aug0-6'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
-
-
-
-
-kgres.load_weights('rn17-brvw-aug0-1.hdf5')
-adam=Adam(lr=0.0001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-kgres.compile(optimizer=adam)
-
-
-RUN_NAME='rn17-brvw-opt0001-1'
-
-
-kgres.fit_gen(
-     epochs=20,
-     train_gen=train_gen,
-     train_steps=200,
-     validation_gen=valid_gen,
-     validation_steps=100,
-     history_name=RUN_NAME,
-     checkpoint_name=RUN_NAME)
 
 
 
