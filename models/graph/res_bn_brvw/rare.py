@@ -9,23 +9,22 @@ import argparse
 # SETUP
 #
 
-
 tags=[
-    'clear',
-    'partly_cloudy',
-    'haze',
-    'cloudy']
+    'bare_ground',
+    'selective_logging',
+    'artisinal_mine',
+    'blooming',
+    'slash_burn',
+    'conventional_mine',
+    'blow_down']
 
-
-ACTIVATION='softmax'
 COMPLEXITY=[1024,512]
 WEIGHTS=None
 RUN_START=0
-REQ_PCT=None
+REQ_PCT=40
 AUGMENT=True
 
-
-MODEL_NAME='weather'
+MODEL_NAME='rare'
 # MODEL_NAME='_'.join(tags)
 train_csv=f'train_{MODEL_NAME}.csv'
 valid_csv=f'valid_{MODEL_NAME}.csv'
@@ -106,7 +105,7 @@ else:
     x=kg_model.model().layers[-1].output
 
 
-outputs=Dense(len(tags), activation=ACTIVATION)(x)
+outputs=Dense(len(tags), activation='sigmoid')(x)
 kg_model._model=Model(inputs=inputs,outputs=outputs)
 
 

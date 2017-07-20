@@ -7,7 +7,7 @@ from keras.layers import Dense, Dropout
 #
 
 MODEL_NAME='common'
-common_tags=['primary','agriculture','road','water','cultivation','habitation']
+tags=['primary','agriculture','road','water','cultivation','habitation']
 train_csv=f'train_{MODEL_NAME}.csv'
 valid_csv=f'valid_{MODEL_NAME}.csv'
 
@@ -21,18 +21,20 @@ def create_csvs(tags):
     main.valid_gen.reduce_columns(*tags,others=False)
     main.valid_gen.save(valid_csv)
 
-create_csvs(tags)
+# create_csvs(tags)
 
 train_gen=DFGen(
     csv_file=train_csv,
     csv_sep=',',
     batch_size=main.TRAIN_BATCH_SIZE,
-    lambda_func=main.norm_brvw)
+    lambda_func=main.norm_brvw,
+    tags=tags)
 valid_gen=DFGen(
     csv_file=valid_csv,
     csv_sep=',',
     batch_size=main.VALID_BATCH_SIZE,
-    lambda_func=main.norm_brvw)
+    lambda_func=main.norm_brvw,
+    tags=tags)
 
 train_gen.dataframe.head()
 valid_gen.dataframe.head()

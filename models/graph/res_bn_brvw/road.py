@@ -10,14 +10,10 @@ import argparse
 #
 
 
-tags=[
-    'clear',
-    'partly_cloudy',
-    'haze',
-    'cloudy']
+tags=['road']
 
 
-ACTIVATION='softmax'
+ACTIVATION='sigmoid'
 COMPLEXITY=[1024,512]
 WEIGHTS=None
 RUN_START=0
@@ -25,8 +21,7 @@ REQ_PCT=None
 AUGMENT=True
 
 
-MODEL_NAME='weather'
-# MODEL_NAME='_'.join(tags)
+MODEL_NAME='_'.join(tags)
 train_csv=f'train_{MODEL_NAME}.csv'
 valid_csv=f'valid_{MODEL_NAME}.csv'
 TRAIN_BATCH_SIZE=64 #main.TRAIN_BATCH_SIZE

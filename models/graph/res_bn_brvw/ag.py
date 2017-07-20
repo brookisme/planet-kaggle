@@ -3,36 +3,21 @@ import main
 from dfgen import DFGen
 from keras.models import Model
 from keras.layers import Dense, Dropout
-import argparse
-
 #
 # SETUP
 #
 
-
-tags=[
-    'clear',
-    'partly_cloudy',
-    'haze',
-    'cloudy']
-
-
-ACTIVATION='softmax'
+MODEL_NAME='agriculture'
 COMPLEXITY=[1024,512]
-WEIGHTS=None
-RUN_START=0
-REQ_PCT=None
-AUGMENT=True
-
-
-MODEL_NAME='weather'
-# MODEL_NAME='_'.join(tags)
+tags=['agriculture']
 train_csv=f'train_{MODEL_NAME}.csv'
 valid_csv=f'valid_{MODEL_NAME}.csv'
 TRAIN_BATCH_SIZE=64 #main.TRAIN_BATCH_SIZE
 VALID_BATCH_SIZE=main.VALID_BATCH_SIZE
 TRAIN_STEPS=200
 VALID_STEPS=100
+WEIGHTS=None
+RUN_START=0
 
 
 #
@@ -40,8 +25,6 @@ VALID_STEPS=100
 #
 def create_csv(gen,path,tags):
     gen.reduce_columns(*tags,others=False)
-    if REQ_PCT:
-        gen.require_values(REQ_PCT)
     gen.save(path)
 
 
@@ -58,8 +41,7 @@ train_gen=DFGen(
     csv_sep=',',
     batch_size=TRAIN_BATCH_SIZE,
     lambda_func=main.norm_brvw,
-    tags=tags,
-    augment=AUGMENT)
+    tags=tags)
 
 
 valid_gen=DFGen(
@@ -67,15 +49,10 @@ valid_gen=DFGen(
     csv_sep=',',
     batch_size=VALID_BATCH_SIZE,
     lambda_func=main.norm_brvw,
-    tags=tags,
-    augment=AUGMENT)
-
+    tags=tags)
 
 train_gen.dataframe.head()
 valid_gen.dataframe.head()
-
-train_gen.size
-valid_gen.size
 
 
 
@@ -106,7 +83,7 @@ else:
     x=kg_model.model().layers[-1].output
 
 
-outputs=Dense(len(tags), activation=ACTIVATION)(x)
+outputs=Dense(len(tags), activation='sigmoid')(x)
 kg_model._model=Model(inputs=inputs,outputs=outputs)
 
 
